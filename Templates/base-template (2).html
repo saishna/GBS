@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+    ════════════════════════════════════════════════════════════════
+    GBS-CIDP & NeuroAI Research Foundation Nepal
+    BASE PAGE TEMPLATE  —  fully self-contained, all CSS embedded
+
+    HOW TO USE:
+      1. Copy this file, rename it  (e.g. patient-stories.html)
+      2. Update <title> and <meta name="description">
+      3. Mark the correct nav link as  class="active"
+      4. Update Page Hero: section-tag, h1, p, breadcrumb
+      5. Replace the PAGE CONTENT block with your sections
+      6. Add page-specific styles in the PAGE STYLES block below
+      7. Add page-specific JS at the bottom
+
+    SECTION WRAPPERS:
+      <section class="section">              white background
+      <section class="section section-alt">  warm-white background
+      <section class="section section-dark"> dark navy background
+
+    See COMPONENT EXAMPLES in the HTML comments at the very bottom.
+    ════════════════════════════════════════════════════════════════
+    -->
+
+    <!-- ① UPDATE title and description -->
+    <meta name="description" content="GBS-CIDP and NeuroAI Research Foundation Nepal — [page description].">
+    <title>[Page Title] | GBS-CIDP &amp; NeuroAI Research Foundation Nepal</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================================================
+           BASE STYLES — shared design system (do not edit this block)
+           ============================================================ */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --blue-deep:    #0A2540;
+            --blue-mid:     #1A5276;
+            --blue-bright:  #2471A3;
+            --blue-pale:    #D6EAF8;
+            --teal:         #148F77;
+            --warm-white:   #F7F8FA;
+            --off-white:    #EEF1F5;
+            --white:        #FFFFFF;
+            --text-dark:    #0A2540;
+            --text-mid:     #2C3E50;
+            --text-light:   #5D6D7E;
+            --border:       rgba(10,37,64,0.1);
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body:    'DM Sans', system-ui, sans-serif;
+            --transition:   0.35s cubic-bezier(0.4,0,0.2,1);
+            --shadow-sm:    0 1px 3px rgba(10,37,64,0.08);
+            --shadow-md:    0 4px 16px rgba(10,37,64,0.1);
+            --shadow-lg:    0 12px 40px rgba(10,37,64,0.15);
+        }
+
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body { font-family: var(--font-body); color: var(--text-dark); background: var(--white); line-height: 1.65; overflow-x: hidden; }
+
+        h1,h2,h3,h4,h5 { font-family: var(--font-display); line-height: 1.15; color: var(--blue-deep); }
+        h1 { font-size: clamp(2.2rem,5vw,3.8rem);  font-weight: 400; }
+        h2 { font-size: clamp(1.8rem,3.5vw,3rem);  font-weight: 400; }
+        h3 { font-size: 1.6rem;  font-weight: 500; }
+        h4 { font-size: 1.2rem;  font-weight: 600; }
+
+        a { color: var(--blue-bright); text-decoration: none; transition: var(--transition); }
+        a:hover { color: var(--blue-deep); }
+        img { max-width: 100%; height: auto; display: block; }
+        p { line-height: 1.75; }
+
+        /* Layout */
+        .container { max-width: 1180px; margin: 0 auto; padding: 0 2rem; }
+        .section      { padding: 5.5rem 0; }
+        .section-alt  { background: var(--warm-white); }
+        .section-dark { background: var(--blue-deep); color: var(--white); }
+        .center { text-align: center; }
+        .center .section-sub { margin: 0 auto; }
+
+        /* Section labels */
+        .section-tag { display: inline-block; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--blue-bright); margin-bottom: 1rem; }
+        .section-dark .section-tag { color: rgba(255,255,255,0.5); }
+        .section-title { color: var(--blue-deep); margin-bottom: 1rem; }
+        .section-dark .section-title { color: var(--white); }
+        .section-sub { font-size: 1rem; color: var(--text-light); max-width: 580px; line-height: 1.75; }
+        .section-dark .section-sub { color: rgba(255,255,255,0.6); }
+
+        /* Buttons */
+        .btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.8rem 1.85rem; border-radius: 5px; font-weight: 500; font-size: 0.9rem; transition: var(--transition); border: none; cursor: pointer; font-family: var(--font-body); white-space: nowrap; }
+        .btn-primary { background: var(--blue-deep); color: var(--white); }
+        .btn-primary:hover { background: var(--blue-mid); color: var(--white); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(10,37,64,0.25); }
+        .btn-ghost   { background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,0.4); }
+        .btn-ghost:hover { background: rgba(255,255,255,0.1); color: var(--white); border-color: rgba(255,255,255,0.7); }
+        .btn-outline { background: transparent; color: var(--blue-deep); border: 1.5px solid var(--blue-deep); }
+        .btn-outline:hover { background: var(--blue-deep); color: var(--white); }
+        .btn-white   { background: var(--white); color: var(--blue-deep); }
+        .btn-white:hover { background: var(--off-white); transform: translateY(-1px); }
+        .btn-lg { padding: 1rem 2.2rem; font-size: 0.95rem; }
+        .btn-sm { padding: 0.55rem 1.25rem; font-size: 0.82rem; }
+
+        /* Top bar */
+        .top-bar { background: var(--blue-deep); color: rgba(255,255,255,0.75); font-size: 0.8rem; letter-spacing: 0.03em; padding: 0.55rem 0; }
+        .top-bar .container { display: flex; justify-content: space-between; align-items: center; }
+        .top-bar-left { display: flex; gap: 2rem; }
+        .top-bar-left span { display: flex; align-items: center; gap: 0.4rem; }
+        .top-bar svg { opacity: 0.6; }
+        .top-bar a { color: rgba(255,255,255,0.75); }
+        .top-bar a:hover { color: var(--white); }
+        .lang-btn { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.85); padding: 0.2rem 0.75rem; border-radius: 3px; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; cursor: pointer; font-family: var(--font-body); transition: var(--transition); }
+        .lang-btn:hover { background: rgba(255,255,255,0.2); color: #fff; }
+
+        /* Navbar */
+        .navbar { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; transition: box-shadow var(--transition); }
+        .navbar.scrolled { box-shadow: var(--shadow-md); }
+        .nav-wrapper { display: flex; align-items: center; justify-content: space-between; padding: 0.85rem 0; }
+        .logo { display: flex; align-items: center; gap: 0.85rem; color: var(--blue-deep); }
+        .logo-mark { width: 44px; height: 44px; background: var(--blue-deep); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .logo-mark svg { width: 24px; height: 24px; }
+        .logo-title { font-family: var(--font-display); font-size: 1.3rem; font-weight: 600; letter-spacing: -0.01em; line-height: 1.1; color: var(--blue-deep); }
+        .logo-sub { font-size: 0.7rem; color: var(--text-light); letter-spacing: 0.04em; font-weight: 400; }
+        .nav-menu { display: flex; list-style: none; gap: 0.25rem; align-items: center; }
+        .nav-menu > li > a { color: var(--text-mid); font-size: 0.875rem; font-weight: 500; padding: 0.5rem 0.75rem; border-radius: 4px; transition: var(--transition); display: flex; align-items: center; gap: 0.25rem; }
+        .nav-menu > li > a:hover, .nav-menu > li > a.active { color: var(--blue-deep); background: var(--warm-white); }
+        .nav-menu .arrow { font-size: 0.6rem; opacity: 0.5; transition: transform var(--transition); }
+        .dropdown { position: relative; }
+        .dropdown:hover .arrow { transform: rotate(180deg); }
+        .dropdown-menu { position: absolute; top: calc(100% + 0.5rem); left: 0; background: var(--white); border: 1px solid var(--border); border-radius: 8px; box-shadow: var(--shadow-lg); padding: 0.5rem; min-width: 210px; list-style: none; opacity: 0; visibility: hidden; transform: translateY(-6px); transition: var(--transition); }
+        .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown-menu a { display: block; padding: 0.55rem 0.85rem; font-size: 0.85rem; color: var(--text-mid); border-radius: 5px; transition: var(--transition); }
+        .dropdown-menu a:hover { background: var(--warm-white); color: var(--blue-deep); }
+        .btn-donate-nav { background: var(--blue-deep); color: var(--white) !important; padding: 0.55rem 1.35rem !important; border-radius: 5px; font-weight: 600 !important; letter-spacing: 0.02em; margin-left: 0.5rem; transition: var(--transition); }
+        .btn-donate-nav:hover { background: var(--blue-mid) !important; }
+        .mobile-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 0.4rem; }
+        .mobile-toggle span { width: 22px; height: 2px; background: var(--blue-deep); border-radius: 2px; transition: var(--transition); }
+
+        /* Page hero banner (inner pages) */
+        .page-hero { background: var(--blue-deep); padding: 4.5rem 0 4rem; position: relative; overflow: hidden; }
+        .page-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, transparent 50%, rgba(36,113,163,0.15) 100%); pointer-events: none; }
+        .page-hero-content { position: relative; z-index: 1; }
+        .page-hero .section-tag { color: rgba(255,255,255,0.45); }
+        .page-hero h1 { color: var(--white); font-size: clamp(2rem,4.5vw,3.5rem); }
+        .page-hero p  { color: rgba(255,255,255,0.65); max-width: 560px; margin-top: 0.85rem; font-size: 1rem; line-height: 1.75; }
+        .breadcrumb { display: flex; gap: 0.5rem; align-items: center; font-size: 0.78rem; color: rgba(255,255,255,0.4); margin-bottom: 1.5rem; list-style: none; }
+        .breadcrumb a { color: rgba(255,255,255,0.5); }
+        .breadcrumb a:hover { color: rgba(255,255,255,0.85); }
+        .breadcrumb li + li::before { content: '/'; margin-right: 0.5rem; opacity: 0.4; }
+
+        /* Generic card */
+        .card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 2rem 1.75rem; transition: var(--transition); }
+        .card:hover { border-color: var(--blue-bright); box-shadow: var(--shadow-md); transform: translateY(-3px); }
+        .card-icon { width: 44px; height: 44px; background: var(--blue-pale); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; }
+        .card-icon svg { width: 20px; height: 20px; color: var(--blue-mid); }
+        .card h3 { font-size: 1.15rem; font-weight: 500; margin-bottom: 0.5rem; }
+        .card p  { font-size: 0.875rem; color: var(--text-light); line-height: 1.65; }
+        .card-link { display: inline-block; font-size: 0.82rem; font-weight: 600; color: var(--blue-bright); margin-top: 1.25rem; letter-spacing: 0.02em; }
+        .card-link:hover { color: var(--blue-deep); }
+
+        /* Info boxes */
+        .info-box { background: #FFF8E7; border-left: 3px solid #E6A817; padding: 1rem 1.25rem; border-radius: 0 6px 6px 0; font-size: 0.87rem; color: var(--text-mid); line-height: 1.65; }
+        .info-box.success { background: #EAF7F0; border-color: var(--teal); }
+        .info-box.info    { background: var(--blue-pale); border-color: var(--blue-bright); }
+        .info-box strong  { display: block; margin-bottom: 0.35rem; color: var(--text-dark); }
+
+        /* CTA section */
+        .cta-section { background: var(--blue-deep); padding: 6rem 0; text-align: center; }
+        .cta-section h2 { font-family: var(--font-display); font-size: clamp(2rem,4vw,3.2rem); font-weight: 400; color: var(--white); margin-bottom: 1rem; }
+        .cta-section p  { font-size: 1rem; color: rgba(255,255,255,0.65); max-width: 540px; margin: 0 auto 2.5rem; line-height: 1.75; }
+        .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+        /* Footer */
+        .footer { background: #060F1A; color: rgba(255,255,255,0.65); padding: 5rem 0 2.5rem; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 3.5rem; margin-bottom: 3.5rem; }
+        .footer-brand { margin-bottom: 1.25rem; }
+        .footer-logo-wrap { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem; }
+        .footer-logo-mark { width: 38px; height: 38px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .footer-logo-mark svg { width: 20px; height: 20px; }
+        .footer-logo-name { font-family: var(--font-display); font-size: 1.1rem; color: rgba(255,255,255,0.9); line-height: 1.2; }
+        .footer-brand p { font-size: 0.83rem; line-height: 1.8; }
+        .social-links { display: flex; gap: 0.6rem; margin-top: 1.5rem; }
+        .social-links a { width: 36px; height: 36px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: var(--transition); color: rgba(255,255,255,0.5); }
+        .social-links a:hover { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9); }
+        .social-links svg { width: 15px; height: 15px; fill: currentColor; }
+        .footer-col h4 { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 1.25rem; }
+        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+        .footer-col ul a { font-size: 0.85rem; color: rgba(255,255,255,0.55); transition: var(--transition); }
+        .footer-col ul a:hover { color: rgba(255,255,255,0.9); }
+        .contact-item { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.85rem; margin-bottom: 0.75rem; }
+        .contact-item svg { width: 14px; height: 14px; opacity: 0.4; flex-shrink: 0; margin-top: 0.15rem; }
+        .contact-item a { color: rgba(255,255,255,0.55); }
+        .contact-item a:hover { color: rgba(255,255,255,0.9); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; }
+        .footer-bottom p { font-size: 0.78rem; color: rgba(255,255,255,0.3); }
+        .footer-bottom a { color: rgba(255,255,255,0.3); }
+        .footer-bottom a:hover { color: rgba(255,255,255,0.7); }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .nav-menu { display: none; }
+            .nav-menu.open { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--white); border-top: 1px solid var(--border); padding: 1rem; box-shadow: var(--shadow-lg); gap: 0.25rem; z-index: 999; }
+            .nav-menu.open .dropdown-menu { position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; border: none; padding: 0 0 0 1rem; background: transparent; }
+            .mobile-toggle { display: flex; }
+            .navbar { position: relative; }
+            .nav-wrapper { position: relative; }
+            .footer-grid { grid-template-columns: repeat(2,1fr); gap: 2rem; }
+        }
+        @media (max-width: 640px) {
+            .container { padding: 0 1.25rem; }
+            .section { padding: 3.5rem 0; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .top-bar-left { gap: 0.75rem; font-size: 0.73rem; }
+            .page-hero { padding: 3rem 0 2.5rem; }
+        }
+
+        @keyframes fadeIn  { from { opacity: 0; }                        to { opacity: 1; } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .anim-fade-in  { animation: fadeIn  0.6s ease forwards; }
+        .anim-slide-up { animation: slideUp 0.7s ease forwards; }
+
+        /* ============================================================
+           ② PAGE STYLES — add styles unique to this page below here
+           ============================================================ */
+
+    </style>
+</head>
+<body>
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-left">
+                <span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 12a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9a16 16 0 006.91 6.91l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                    014560964
+                </span>
+                <span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+                    <a href="mailto:gbscidpfoundationnepal@gmail.com">gbscidpfoundationnepal@gmail.com</a>
+                </span>
+            </div>
+            <button class="lang-btn">NP</button>
+        </div>
+    </div>
+
+    <!-- NAVIGATION  ③ add class="active" to the correct link -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="index.html" class="logo">
+                    <div class="logo-mark">
+                        <svg width="22" height="22" viewBox="0 0 50 50" fill="none">
+                            <circle cx="25" cy="25" r="20" stroke="white" stroke-width="2"/>
+                            <path d="M25 12 L25 38 M14 25 L36 25" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                            <circle cx="25" cy="25" r="3.5" fill="white"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="logo-title">GBS-CIDP Foundation</div>
+                        <div class="logo-sub">NeuroAI Research Foundation Nepal</div>
+                    </div>
+                </a>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+                <ul class="nav-menu" id="navMenu">
+                    <li class="dropdown">
+                        <a href="conditions.html">Conditions <span class="arrow">&#9662;</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="conditions.html#gbs">Guillain-Barr&#233; Syndrome (GBS)</a></li>
+                            <li><a href="conditions.html#cidp">CIDP</a></li>
+                            <li><a href="conditions.html#mmn">MMN</a></li>
+                            <li><a href="conditions.html#glossary">Medical Glossary</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="resources.html">Resources <span class="arrow">&#9662;</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="resources.html#publications">Publications</a></li>
+                            <li><a href="resources.html#videos">Educational Videos</a></li>
+                            <li><a href="resources.html#specialist">Find a Specialist</a></li>
+                            <li><a href="resources.html#icu">ICU Toolkit</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="patient-stories.html">Patient Stories</a></li>
+                    <li class="dropdown">
+                        <a href="team.html">Team <span class="arrow">&#9662;</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="team.html#board">Board of Directors</a></li>
+                            <li><a href="team.html#management">Management Team</a></li>
+                            <li><a href="team.html#medical">Medical Board</a></li>
+                            <li><a href="team.html#advisors">Advisors</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="about.html">About <span class="arrow">&#9662;</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="about.html#story">Our Story</a></li>
+                            <li><a href="about.html#mission">Our Mission</a></li>
+                            <li><a href="events.html">Events</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="donate.html" class="btn-donate-nav">Donate</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PAGE HERO  ④ update tag, h1, p, and breadcrumb -->
+    <div class="page-hero">
+        <div class="container">
+            <div class="page-hero-content">
+                <ul class="breadcrumb">
+                    <li><a href="index.html">Home</a></li>
+                    <li>[Section]</li>
+                    <li>[Page Name]</li>
+                </ul>
+                <span class="section-tag">[Category Label]</span>
+                <h1>[Page Title]</h1>
+                <p>[A short description of what this page covers.]</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ════════════════════════════════════════════════════════
+         ⑤ PAGE CONTENT — replace everything below with your sections
+         ════════════════════════════════════════════════════════ -->
+
+    <section class="section">
+        <div class="container">
+            <div class="center" style="margin-bottom:3rem;">
+                <span class="section-tag">Getting Started</span>
+                <h2 class="section-title">Your Content Goes Here</h2>
+                <p class="section-sub">Replace this with your page sections. Copy ready-made components from the examples in the HTML comments at the bottom of this file.</p>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;">
+                <div class="card">
+                    <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+                    <h3>Card One</h3>
+                    <p>Replace with real content for this page.</p>
+                    <a href="#" class="card-link">Learn More &rarr;</a>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+                    <h3>Card Two</h3>
+                    <p>Replace with real content for this page.</p>
+                    <a href="#" class="card-link">Learn More &rarr;</a>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+                    <h3>Card Three</h3>
+                    <p>Replace with real content for this page.</p>
+                    <a href="#" class="card-link">Learn More &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA — remove if not needed -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Join Us in Making a Difference</h2>
+            <p>Whether through volunteering, donations, or spreading awareness &#8212; every contribution helps build a stronger foundation for patients and families across Nepal.</p>
+            <div class="cta-buttons">
+                <a href="donate.html"  class="btn btn-white btn-lg">Make a Donation</a>
+                <a href="contact.html" class="btn btn-ghost btn-lg">Get Involved</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo-wrap">
+                        <div class="footer-logo-mark">
+                            <svg viewBox="0 0 50 50" fill="none"><circle cx="25" cy="25" r="20" stroke="rgba(255,255,255,0.5)" stroke-width="2"/><path d="M25 12 L25 38 M14 25 L36 25" stroke="rgba(255,255,255,0.5)" stroke-width="2.5" stroke-linecap="round"/><circle cx="25" cy="25" r="3.5" fill="rgba(255,255,255,0.5)"/></svg>
+                        </div>
+                        <div class="footer-logo-name">GBS-CIDP and NeuroAI<br>Research Foundation Nepal</div>
+                    </div>
+                    <p>Improving the quality of life for individuals and families affected by GBS, CIDP, MMN, and variants through support, education, research, and advocacy.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg></a>
+                        <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/></svg></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="conditions.html">Conditions</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="research.html">Research</a></li>
+                        <li><a href="patient-stories.html">Patient Stories</a></li>
+                        <li><a href="team.html">Our Team</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Get Involved</h4>
+                    <ul>
+                        <li><a href="donate.html">Make a Donation</a></li>
+                        <li><a href="volunteer.html">Volunteer</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="fundraise.html">Host a Fundraiser</a></li>
+                        <li><a href="awareness.html">Awareness Campaigns</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <div class="contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+                        <a href="mailto:gbscidpfoundationnepal@gmail.com">gbscidpfoundationnepal@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 12a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9a16 16 0 006.91 6.91l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                        <span>014560964</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <span>Kumarigal, Kathmandu, Nepal</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 GBS-CIDP and NeuroAI Research Foundation Nepal. All rights reserved.</p>
+                <p><a href="privacy.html">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="terms.html">Terms of Use</a> &nbsp;&middot;&nbsp; Charitable Registration: Pending</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BASE JS -->
+    <script>
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 20); });
+        document.getElementById('mobileToggle').addEventListener('click', () => { document.getElementById('navMenu').classList.toggle('open'); });
+        document.querySelectorAll('.nav-menu a').forEach(l => l.addEventListener('click', () => document.getElementById('navMenu').classList.remove('open')));
+        (function(){ const p = location.pathname.split('/').pop()||'index.html'; document.querySelectorAll('.nav-menu > li > a').forEach(a=>{ if(a.getAttribute('href')===p) a.classList.add('active'); }); })();
+    </script>
+
+    <!-- ⑥ PAGE JS -->
+    <script>
+        // Add page-specific JavaScript here
+    </script>
+
+</body>
+</html>

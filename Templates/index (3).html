@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GBS-CIDP and NeuroAI Research Foundation Nepal — support, education, research, and advocacy for patients and families affected by GBS, CIDP, and variant conditions.">
+    <title>GBS-CIDP & NeuroAI Research Foundation Nepal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           RESET & VARIABLES
+        ============================================ */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --blue-deep:    #0A2540;
+            --blue-mid:     #1A5276;
+            --blue-bright:  #2471A3;
+            --blue-pale:    #D6EAF8;
+            --teal:         #148F77;
+            --warm-white:   #F7F8FA;
+            --off-white:    #EEF1F5;
+            --text-dark:    #0A2540;
+            --text-mid:     #2C3E50;
+            --text-light:   #5D6D7E;
+            --white:        #FFFFFF;
+            --border:       rgba(10,37,64,0.1);
+
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body:    'DM Sans', system-ui, sans-serif;
+
+            --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
+            --shadow-sm:  0 1px 3px rgba(10,37,64,0.08);
+            --shadow-md:  0 4px 16px rgba(10,37,64,0.1);
+            --shadow-lg:  0 12px 40px rgba(10,37,64,0.15);
+        }
+
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-dark);
+            background: var(--white);
+            line-height: 1.65;
+            overflow-x: hidden;
+        }
+
+        h1,h2,h3,h4,h5 {
+            font-family: var(--font-display);
+            line-height: 1.15;
+            color: var(--blue-deep);
+        }
+
+        a { color: var(--blue-bright); text-decoration: none; transition: var(--transition); }
+        img { max-width: 100%; height: auto; display: block; }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* ============================================
+           TOP BAR
+        ============================================ */
+        .top-bar {
+            background: var(--blue-deep);
+            color: rgba(255,255,255,0.75);
+            font-size: 0.8rem;
+            letter-spacing: 0.03em;
+            padding: 0.55rem 0;
+        }
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .top-bar-left { display: flex; gap: 2rem; }
+        .top-bar-left span { display: flex; align-items: center; gap: 0.4rem; }
+        .top-bar svg { opacity: 0.6; }
+        .lang-btn {
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.85);
+            padding: 0.2rem 0.75rem;
+            border-radius: 3px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            cursor: pointer;
+            font-family: var(--font-body);
+            transition: var(--transition);
+        }
+        .lang-btn:hover { background: rgba(255,255,255,0.2); color: #fff; }
+
+        /* ============================================
+           NAVIGATION
+        ============================================ */
+        .navbar {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: box-shadow var(--transition);
+        }
+        .navbar.scrolled { box-shadow: var(--shadow-md); }
+        .nav-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.85rem 0;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            color: var(--blue-deep);
+        }
+        .logo-mark {
+            width: 44px; height: 44px;
+            background: var(--blue-deep);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        .logo-mark svg { width: 24px; height: 24px; }
+        .logo-title {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            line-height: 1.1;
+        }
+        .logo-sub {
+            font-size: 0.7rem;
+            color: var(--text-light);
+            letter-spacing: 0.04em;
+            font-weight: 400;
+        }
+
+        .nav-menu { display: flex; list-style: none; gap: 0.25rem; align-items: center; }
+        .nav-menu > li > a {
+            color: var(--text-mid);
+            font-size: 0.875rem;
+            font-weight: 500;
+            padding: 0.5rem 0.75rem;
+            border-radius: 4px;
+            transition: var(--transition);
+            display: flex; align-items: center; gap: 0.25rem;
+        }
+        .nav-menu > li > a:hover { color: var(--blue-deep); background: var(--warm-white); }
+        .nav-menu .arrow { font-size: 0.6rem; opacity: 0.5; transition: transform var(--transition); }
+        .dropdown { position: relative; }
+        .dropdown:hover .arrow { transform: rotate(180deg); }
+        .dropdown-menu {
+            position: absolute; top: calc(100% + 0.5rem); left: 0;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            box-shadow: var(--shadow-lg);
+            padding: 0.5rem;
+            min-width: 210px;
+            list-style: none;
+            opacity: 0; visibility: hidden;
+            transform: translateY(-6px);
+            transition: var(--transition);
+        }
+        .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown-menu a {
+            display: block;
+            padding: 0.55rem 0.85rem;
+            font-size: 0.85rem;
+            color: var(--text-mid);
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+        .dropdown-menu a:hover { background: var(--warm-white); color: var(--blue-deep); }
+
+        .btn-donate-nav {
+            background: var(--blue-deep);
+            color: var(--white) !important;
+            padding: 0.55rem 1.35rem !important;
+            border-radius: 5px;
+            font-weight: 600 !important;
+            letter-spacing: 0.02em;
+            margin-left: 0.5rem;
+        }
+        .btn-donate-nav:hover { background: var(--blue-mid) !important; transform: none; }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.4rem;
+        }
+        .mobile-toggle span {
+            width: 22px; height: 2px;
+            background: var(--blue-deep);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        /* ============================================
+           HERO — IMAGE SLIDER
+        ============================================ */
+        .hero {
+            position: relative;
+            height: 92vh;
+            min-height: 600px;
+            max-height: 850px;
+            overflow: hidden;
+            background: var(--blue-deep);
+        }
+
+        .hero-slides { position: absolute; inset: 0; }
+        .hero-slide {
+            position: absolute; inset: 0;
+            opacity: 0;
+            transition: opacity 1.2s ease;
+        }
+        .hero-slide.active { opacity: 1; }
+
+        .hero-slide img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            object-position: center;
+            filter: brightness(0.45) saturate(0.7);
+            transform: scale(1);
+            transition: transform 8s ease-out;
+        }
+        .hero-slide.active img { transform: scale(1.04); }
+
+        .hero-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(
+                to right,
+                rgba(10,37,64,0.8) 0%,
+                rgba(10,37,64,0.4) 60%,
+                transparent 100%
+            );
+        }
+
+        .hero-content {
+            position: absolute; inset: 0;
+            display: flex; flex-direction: column;
+            justify-content: center;
+            padding: 0 2rem;
+            max-width: 1180px;
+            margin: 0 auto;
+            left: 50%; transform: translateX(-50%);
+            width: 100%;
+        }
+        .hero-eyebrow {
+            font-size: 0.75rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 1.25rem;
+            font-family: var(--font-body);
+            font-weight: 500;
+            opacity: 0;
+            animation: slideUp 0.8s 0.3s ease forwards;
+        }
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.8rem, 5.5vw, 5rem);
+            font-weight: 400;
+            color: var(--white);
+            line-height: 1.08;
+            max-width: 680px;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: slideUp 0.8s 0.5s ease forwards;
+        }
+        .hero-title em { font-style: italic; color: rgba(255,255,255,0.7); }
+        .hero-sub {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.75);
+            max-width: 520px;
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            opacity: 0;
+            animation: slideUp 0.8s 0.7s ease forwards;
+        }
+        .hero-actions {
+            display: flex; gap: 1rem; flex-wrap: wrap;
+            opacity: 0;
+            animation: slideUp 0.8s 0.9s ease forwards;
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Slider controls */
+        .slider-controls {
+            position: absolute;
+            bottom: 2.5rem; right: 2.5rem;
+            display: flex; gap: 0.5rem; z-index: 10;
+        }
+        .slider-dot {
+            width: 28px; height: 3px;
+            background: rgba(255,255,255,0.3);
+            border: none; cursor: pointer;
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+        .slider-dot.active { background: rgba(255,255,255,0.9); width: 48px; }
+
+        .slider-arrows {
+            position: absolute;
+            bottom: 2.4rem; left: 50%; transform: translateX(-50%);
+            display: flex; gap: 0.75rem; z-index: 10;
+        }
+        .slider-arrow {
+            width: 42px; height: 42px;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.25);
+            color: rgba(255,255,255,0.85);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            backdrop-filter: blur(4px);
+        }
+        .slider-arrow:hover { background: rgba(255,255,255,0.25); color: #fff; }
+        .slider-arrow svg { width: 16px; height: 16px; }
+
+        /* ============================================
+           STATS BAR
+        ============================================ */
+        .stats-bar {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            divide: 1px solid var(--border);
+        }
+        .stat-item {
+            padding: 1.75rem 1.5rem;
+            text-align: center;
+            border-right: 1px solid var(--border);
+        }
+        .stat-item:last-child { border-right: none; }
+        .stat-value {
+            font-family: var(--font-display);
+            font-size: 2.6rem;
+            font-weight: 500;
+            color: var(--blue-deep);
+            line-height: 1;
+        }
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-top: 0.4rem;
+        }
+
+        /* ============================================
+           BUTTONS
+        ============================================ */
+        .btn {
+            display: inline-flex;
+            align-items: center; gap: 0.4rem;
+            padding: 0.8rem 1.85rem;
+            border-radius: 5px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 0.01em;
+            transition: var(--transition);
+            border: none; cursor: pointer;
+            font-family: var(--font-body);
+        }
+        .btn-primary { background: var(--blue-deep); color: var(--white); }
+        .btn-primary:hover { background: var(--blue-mid); color: var(--white); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(10,37,64,0.25); }
+        .btn-ghost { background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,0.4); }
+        .btn-ghost:hover { background: rgba(255,255,255,0.1); color: var(--white); border-color: rgba(255,255,255,0.7); }
+        .btn-outline-dark { background: transparent; color: var(--blue-deep); border: 1.5px solid var(--blue-deep); }
+        .btn-outline-dark:hover { background: var(--blue-deep); color: var(--white); }
+        .btn-lg { padding: 1rem 2.2rem; font-size: 0.95rem; }
+
+        /* ============================================
+           SECTION DEFAULTS
+        ============================================ */
+        .section { padding: 5.5rem 0; }
+        .section-alt { background: var(--warm-white); }
+
+        .section-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--blue-bright);
+            margin-bottom: 1rem;
+        }
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            font-weight: 400;
+            color: var(--blue-deep);
+            margin-bottom: 1rem;
+        }
+        .section-sub {
+            font-size: 1rem;
+            color: var(--text-light);
+            max-width: 580px;
+            line-height: 1.75;
+        }
+        .section-header-center { text-align: center; }
+        .section-header-center .section-sub { margin: 0 auto; }
+
+        /* ============================================
+           ABOUT SECTION
+        ============================================ */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 1fr;
+            gap: 5rem;
+            align-items: start;
+        }
+        .about-content p {
+            color: var(--text-mid);
+            line-height: 1.85;
+            margin-bottom: 1.25rem;
+            font-size: 0.975rem;
+        }
+        .value-list { margin-top: 2rem; display: flex; flex-direction: column; gap: 0.75rem; }
+        .value-item {
+            display: flex; gap: 1rem; align-items: flex-start;
+            padding: 1rem 1.25rem;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+        .value-item:hover { border-color: var(--blue-bright); box-shadow: var(--shadow-sm); }
+        .value-dot {
+            width: 8px; height: 8px;
+            background: var(--blue-bright);
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 0.35rem;
+        }
+        .value-item strong { display: block; font-size: 0.9rem; color: var(--blue-deep); margin-bottom: 0.2rem; }
+        .value-item p { margin: 0; font-size: 0.83rem; color: var(--text-light); }
+
+        .mission-card {
+            background: var(--blue-deep);
+            color: var(--white);
+            border-radius: 12px;
+            padding: 2.5rem;
+            position: sticky;
+            top: 90px;
+        }
+        .mission-card h4 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--white);
+            margin-bottom: 2rem;
+        }
+        .mission-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
+        .mission-list li {
+            display: flex; gap: 1.25rem; align-items: flex-start;
+            padding: 1.25rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .mission-list li:last-child { border-bottom: none; }
+        .mission-num {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: rgba(255,255,255,0.25);
+            line-height: 1;
+            flex-shrink: 0;
+            min-width: 2rem;
+        }
+        .mission-info strong { display: block; font-size: 0.95rem; font-weight: 600; color: rgba(255,255,255,0.95); margin-bottom: 0.25rem; }
+        .mission-info p { margin: 0; font-size: 0.82rem; color: rgba(255,255,255,0.5); line-height: 1.5; }
+
+        /* ============================================
+           CONDITIONS SECTION
+        ============================================ */
+        .tab-buttons {
+            display: flex; gap: 0; border-bottom: 2px solid var(--border);
+            margin-bottom: 3rem;
+        }
+        .tab-button {
+            padding: 0.9rem 2rem;
+            background: none; border: none;
+            font-family: var(--font-body);
+            font-size: 0.875rem; font-weight: 500;
+            color: var(--text-light);
+            cursor: pointer;
+            position: relative;
+            transition: var(--transition);
+            letter-spacing: 0.03em;
+        }
+        .tab-button::after {
+            content: '';
+            position: absolute; bottom: -2px; left: 0; right: 0;
+            height: 2px; background: var(--blue-deep);
+            transform: scaleX(0);
+            transition: transform var(--transition);
+        }
+        .tab-button:hover { color: var(--blue-deep); }
+        .tab-button.active { color: var(--blue-deep); font-weight: 600; }
+        .tab-button.active::after { transform: scaleX(1); }
+
+        .tab-pane { display: none; animation: fadeIn 0.4s ease; }
+        .tab-pane.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .condition-content {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+        .condition-text h3 {
+            font-family: var(--font-display);
+            font-size: 2rem; font-weight: 400;
+            margin-bottom: 1rem;
+        }
+        .condition-text p {
+            color: var(--text-mid); line-height: 1.85; font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+        .condition-text h4 {
+            font-size: 0.85rem; font-weight: 600;
+            letter-spacing: 0.08em; text-transform: uppercase;
+            color: var(--text-light);
+            margin: 1.5rem 0 0.75rem;
+        }
+        .symptom-list, .treatment-list {
+            list-style: none; display: flex; flex-direction: column; gap: 0.5rem;
+        }
+        .symptom-list li, .treatment-list li {
+            display: flex; align-items: flex-start; gap: 0.75rem;
+            font-size: 0.9rem; color: var(--text-mid); line-height: 1.6;
+        }
+        .symptom-list li::before {
+            content: '';
+            width: 5px; height: 5px; background: var(--blue-bright);
+            border-radius: 50%; flex-shrink: 0; margin-top: 0.5rem;
+        }
+        .info-box {
+            background: #FFF8E7;
+            border-left: 3px solid #E6A817;
+            padding: 1rem 1.25rem;
+            border-radius: 0 6px 6px 0;
+            margin-top: 1.5rem;
+            font-size: 0.87rem;
+            color: var(--text-mid);
+        }
+        .info-box.success { background: #EAF7F0; border-color: var(--teal); }
+        .info-box strong { display: block; margin-bottom: 0.35rem; color: var(--text-dark); }
+
+        /* Clinical image panel */
+        .condition-visual { position: sticky; top: 90px; }
+        .clinical-img-wrap {
+            border-radius: 10px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            background: var(--off-white);
+            box-shadow: var(--shadow-md);
+        }
+        .clinical-img-wrap img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .clinical-img-wrap:hover img { transform: scale(1.03); }
+        .visual-caption {
+            margin-top: 1rem;
+            padding: 0.85rem 1rem;
+            background: var(--warm-white);
+            border-radius: 6px;
+            font-size: 0.82rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* ============================================
+           RESOURCES SECTION
+        ============================================ */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            margin-top: 3rem;
+        }
+        .resource-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 2rem 1.75rem;
+            transition: var(--transition);
+            display: flex; flex-direction: column;
+        }
+        .resource-card:hover {
+            border-color: var(--blue-bright);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-3px);
+        }
+        .resource-icon {
+            width: 44px; height: 44px;
+            background: var(--blue-pale);
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 1.25rem;
+        }
+        .resource-icon svg { width: 20px; height: 20px; color: var(--blue-mid); }
+        .resource-card h3 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 500; margin-bottom: 0.6rem; }
+        .resource-card p { font-size: 0.875rem; color: var(--text-light); flex-grow: 1; margin-bottom: 1.25rem; line-height: 1.65; }
+        .card-link { font-size: 0.83rem; font-weight: 600; color: var(--blue-bright); letter-spacing: 0.02em; }
+        .card-link:hover { color: var(--blue-deep); }
+
+        /* ============================================
+           RESEARCH SECTION
+        ============================================ */
+        .research-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 5rem;
+            align-items: start;
+        }
+        .research-text h2 { font-size: 2.6rem; font-weight: 400; margin-bottom: 1rem; }
+        .research-text > p { font-size: 0.975rem; color: var(--text-mid); line-height: 1.85; margin-bottom: 2rem; }
+        .focus-items { display: flex; flex-direction: column; gap: 1px; background: var(--border); border-radius: 8px; overflow: hidden; }
+        .focus-item {
+            display: flex; gap: 1.25rem; align-items: flex-start;
+            padding: 1.5rem;
+            background: var(--white);
+            transition: var(--transition);
+        }
+        .focus-item:hover { background: var(--warm-white); }
+        .focus-num {
+            font-family: var(--font-display);
+            font-size: 1.5rem; font-weight: 300;
+            color: var(--blue-bright); opacity: 0.5;
+            flex-shrink: 0; min-width: 2rem;
+        }
+        .focus-item h4 { font-size: 0.95rem; margin-bottom: 0.25rem; }
+        .focus-item p { font-size: 0.85rem; color: var(--text-light); margin: 0; line-height: 1.6; }
+
+        .research-panel {
+            background: var(--warm-white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2.25rem;
+            position: sticky; top: 90px;
+        }
+        .research-panel h3 { font-family: var(--font-display); font-size: 1.35rem; font-weight: 400; margin-bottom: 1.75rem; }
+        .progress-item { margin-bottom: 1.5rem; }
+        .progress-header { display: flex; justify-content: space-between; font-size: 0.83rem; margin-bottom: 0.5rem; }
+        .progress-pct { font-weight: 600; color: var(--blue-deep); }
+        .progress-bar { height: 5px; background: var(--off-white); border-radius: 10px; overflow: hidden; }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--blue-deep), var(--blue-bright));
+            border-radius: 10px;
+        }
+        .panel-note { font-size: 0.8rem; color: var(--text-light); font-style: italic; line-height: 1.6; margin: 0; }
+
+        /* ============================================
+           PATIENT STORIES
+        ============================================ */
+        .stories-placeholder {
+            max-width: 560px;
+            margin: 3rem auto 0;
+            text-align: center;
+            padding: 3rem 2.5rem;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+        .stories-placeholder p { font-size: 0.93rem; color: var(--text-light); line-height: 1.75; }
+        .stories-placeholder a { color: var(--blue-bright); font-weight: 500; }
+
+        /* ============================================
+           CTA SECTION
+        ============================================ */
+        .cta-section {
+            background: var(--blue-deep);
+            padding: 6rem 0;
+            text-align: center;
+        }
+        .cta-section h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 400;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+        .cta-section p {
+            font-size: 1rem; color: rgba(255,255,255,0.65);
+            max-width: 540px; margin: 0 auto 2.5rem;
+            line-height: 1.75;
+        }
+        .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+        /* ============================================
+           FOOTER
+        ============================================ */
+        .footer { background: #060F1A; color: rgba(255,255,255,0.65); padding: 5rem 0 2.5rem; }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 3.5rem;
+            margin-bottom: 3.5rem;
+        }
+        .footer-brand { margin-bottom: 1.25rem; }
+        .footer-logo-wrap {
+            display: flex; align-items: center; gap: 0.75rem;
+            margin-bottom: 1.25rem;
+        }
+        .footer-logo-mark {
+            width: 38px; height: 38px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .footer-logo-mark svg { width: 20px; height: 20px; }
+        .footer-logo-name {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.2;
+        }
+        .footer-brand p { font-size: 0.83rem; line-height: 1.8; }
+        .social-links { display: flex; gap: 0.6rem; margin-top: 1.5rem; }
+        .social-links a {
+            width: 36px; height: 36px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            transition: var(--transition); color: rgba(255,255,255,0.5);
+        }
+        .social-links a:hover { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9); }
+        .social-links svg { width: 15px; height: 15px; }
+
+        .footer-col h4 { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 1.25rem; }
+        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+        .footer-col ul a { font-size: 0.85rem; color: rgba(255,255,255,0.55); transition: var(--transition); }
+        .footer-col ul a:hover { color: rgba(255,255,255,0.9); }
+        .contact-item { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.85rem; margin-bottom: 0.75rem; }
+        .contact-item svg { width: 14px; height: 14px; opacity: 0.4; flex-shrink: 0; margin-top: 0.15rem; }
+        .contact-item a { color: rgba(255,255,255,0.55); }
+        .contact-item a:hover { color: rgba(255,255,255,0.9); }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.06);
+            padding-top: 2rem;
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 0.75rem;
+        }
+        .footer-bottom p { font-size: 0.78rem; color: rgba(255,255,255,0.3); }
+        .footer-bottom a { color: rgba(255,255,255,0.3); }
+        .footer-bottom a:hover { color: rgba(255,255,255,0.7); }
+
+        /* ============================================
+           RESPONSIVE
+        ============================================ */
+        @media (max-width: 992px) {
+            .nav-menu { display: none; }
+            .nav-menu.open {
+                display: flex; flex-direction: column;
+                position: absolute; top: 100%; left: 0; right: 0;
+                background: var(--white);
+                border-top: 1px solid var(--border);
+                padding: 1rem;
+                box-shadow: var(--shadow-lg);
+                gap: 0.25rem;
+            }
+            .mobile-toggle { display: flex; }
+            .navbar { position: relative; }
+            .nav-wrapper { position: relative; }
+            .about-grid, .condition-content, .research-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .mission-card, .condition-visual, .research-panel { position: static; }
+            .resources-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .stat-item:nth-child(2) { border-right: none; }
+            .stat-item:nth-child(3) { border-right: 1px solid var(--border); }
+            .stat-item { border-top: 1px solid var(--border); }
+            .stat-item:first-child, .stat-item:nth-child(2) { border-top: none; }
+        }
+        @media (max-width: 640px) {
+            .hero { height: 100svh; max-height: none; }
+            .resources-grid, .footer-grid, .stats-grid { grid-template-columns: 1fr; }
+            .stat-item { border-right: none; border-top: 1px solid var(--border); }
+            .tab-buttons { overflow-x: auto; }
+            .top-bar-left { gap: 1rem; font-size: 0.73rem; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-left">
+                <span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 12a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9a16 16 0 006.91 6.91l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                    014560964
+                </span>
+                <span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+                    gbscidpfoundationnepal@gmail.com
+                </span>
+            </div>
+            <button class="lang-btn">NP</button>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="#home" class="logo">
+                    <div class="logo-mark">
+                        <svg width="22" height="22" viewBox="0 0 50 50" fill="none">
+                            <circle cx="25" cy="25" r="20" stroke="white" stroke-width="2"/>
+                            <path d="M25 12 L25 38 M14 25 L36 25" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                            <circle cx="25" cy="25" r="3.5" fill="white"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="logo-title">GBS-CIDP Foundation</div>
+                        <div class="logo-sub">NeuroAI Research Foundation Nepal</div>
+                    </div>
+                </a>
+
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+
+                <ul class="nav-menu" id="navMenu">
+                    <li class="dropdown">
+                        <a href="#conditions">Conditions <span class="arrow">▾</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#conditions">Guillain-Barré Syndrome (GBS)</a></li>
+                            <li><a href="#conditions">CIDP</a></li>
+                            <li><a href="#conditions">MMN</a></li>
+                            <li><a href="#conditions">Medical Glossary</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#resources">Resources <span class="arrow">▾</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#resources">Publications</a></li>
+                            <li><a href="#resources">Educational Videos</a></li>
+                            <li><a href="#resources">Find a Specialist</a></li>
+                            <li><a href="#resources">ICU Toolkit</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#research">Research</a></li>
+                    <li><a href="#patient-stories">Patient Stories</a></li>
+                    <li class="dropdown">
+                        <a href="team.html">Team <span class="arrow">▾</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="team.html#board">Board of Directors</a></li>
+                            <li><a href="team.html#management">Management Team</a></li>
+                            <li><a href="team.html#medical">Medical Board</a></li>
+                            <li><a href="team.html#advisors">Advisors</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#about">About <span class="arrow">▾</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#about">Our Story</a></li>
+                            <li><a href="#about">Our Mission</a></li>
+                            <li><a href="#events">Events</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#donate" class="btn-donate-nav">Donate</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Image Slider -->
+    <section id="home" class="hero">
+        <div class="hero-slides" id="heroSlides">
+            <div class="hero-slide active">
+                <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1920&q=85" alt="Neurology research laboratory">
+            </div>
+            <div class="hero-slide">
+                <img src="https://images.unsplash.com/photo-1582719471137-c3967ffb1c42?w=1920&q=85" alt="Clinical care">
+            </div>
+            <div class="hero-slide">
+                <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=1920&q=85" alt="Medical professional with patient">
+            </div>
+            <div class="hero-slide">
+                <img src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=1920&q=85" alt="Neurological imaging">
+            </div>
+        </div>
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+            <p class="hero-eyebrow">GBS-CIDP & NeuroAI Research Foundation Nepal — Est. 2025</p>
+            <h1 class="hero-title">A Foundation for<br><em>Hope & Healing</em></h1>
+            <p class="hero-sub">Pioneering research and advocacy for GBS, CIDP, and variant neurological conditions — powered by compassion and AI-driven health solutions.</p>
+            <div class="hero-actions">
+                <a href="#about" class="btn btn-primary btn-lg">Our Mission</a>
+                <a href="#conditions" class="btn btn-ghost btn-lg">Understand the Conditions</a>
+            </div>
+        </div>
+
+        <div class="slider-controls" id="sliderDots"></div>
+
+        <div class="slider-arrows">
+            <button class="slider-arrow" id="prevSlide" aria-label="Previous slide">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button class="slider-arrow" id="nextSlide" aria-label="Next slide">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value" data-target="2025">0</div>
+                    <div class="stat-label">Foundation Year</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" data-target="4">0</div>
+                    <div class="stat-label">Core Missions</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">AI+</div>
+                    <div class="stat-label">Powered Research</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" data-target="100">0</div>
+                    <div class="stat-label">% Patient-Focused</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <span class="section-tag">Who We Are</span>
+                    <h2 class="section-title">A New Foundation with a Clear Mission</h2>
+                    <p>We are a newly established charitable foundation with a bold vision: to transform the landscape of care for patients with Guillain-Barré Syndrome (GBS), Chronic Inflammatory Demyelinating Polyneuropathy (CIDP), and related neurological conditions.</p>
+                    <p>Founded on the principles of compassion, innovation, and patient-centered care, we're building partnerships with medical professionals, researchers, and patient advocates to create lasting change across Nepal and beyond.</p>
+                    <div class="value-list">
+                        <div class="value-item">
+                            <div class="value-dot"></div>
+                            <div>
+                                <strong>Patient-Centered</strong>
+                                <p>Every decision we make prioritizes patient needs and lived experiences</p>
+                            </div>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-dot"></div>
+                            <div>
+                                <strong>Evidence-Based</strong>
+                                <p>Grounded in rigorous research and clinical expertise</p>
+                            </div>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-dot"></div>
+                            <div>
+                                <strong>Innovation-Driven</strong>
+                                <p>Leveraging AI and emerging technology to improve outcomes</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="mission-card">
+                        <h4>Our Four Core Missions</h4>
+                        <ul class="mission-list">
+                            <li>
+                                <span class="mission-num">01</span>
+                                <div class="mission-info">
+                                    <strong>Advocacy</strong>
+                                    <p>Fighting for patient rights and equitable treatment access</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="mission-num">02</span>
+                                <div class="mission-info">
+                                    <strong>Awareness</strong>
+                                    <p>Educating communities and healthcare professionals nationwide</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="mission-num">03</span>
+                                <div class="mission-info">
+                                    <strong>Research</strong>
+                                    <p>Advancing clinical research and treatment protocols</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="mission-num">04</span>
+                                <div class="mission-info">
+                                    <strong>AI in Health</strong>
+                                    <p>Building AI-driven diagnostic and treatment tools</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conditions Section -->
+    <section id="conditions" class="section section-alt">
+        <div class="container">
+            <div class="section-header-center" style="margin-bottom: 3rem;">
+                <span class="section-tag">Conditions We Support</span>
+                <h2 class="section-title">Understanding GBS, CIDP & Variants</h2>
+                <p class="section-sub">Learn about the neurological conditions at the heart of our mission</p>
+            </div>
+            <div class="tab-buttons">
+                <button class="tab-button active" data-tab="gbs">Guillain-Barré Syndrome</button>
+                <button class="tab-button" data-tab="cidp">CIDP</button>
+                <button class="tab-button" data-tab="mmn">MMN</button>
+            </div>
+            <div>
+                <!-- GBS Tab -->
+                <div class="tab-pane active" id="tab-gbs">
+                    <div class="condition-content">
+                        <div class="condition-text">
+                            <h3>Guillain-Barré Syndrome (GBS)</h3>
+                            <p>Guillain-Barré Syndrome is a rare inflammatory disorder of the peripheral nerves characterized by rapid onset of weakness and, often, paralysis of the legs, arms, breathing muscles, and face.</p>
+                            <p>GBS can affect anyone at any age, but it is more common in adults and males. It often follows a respiratory or gastrointestinal infection.</p>
+                            <h4>Common Symptoms</h4>
+                            <ul class="symptom-list">
+                                <li>Weakness or tingling sensations beginning in the legs</li>
+                                <li>Weakness spreading progressively to the upper body and arms</li>
+                                <li>Difficulty walking or climbing stairs</li>
+                                <li>Difficulty with facial movements, including speaking and swallowing</li>
+                                <li>Severe lower back pain</li>
+                                <li>Difficulty breathing — may require ventilatory support</li>
+                            </ul>
+                            <div class="info-box">
+                                <strong>Medical Emergency</strong>
+                                GBS is a medical emergency. If you or someone you know experiences rapid-onset weakness, seek immediate medical attention without delay.
+                            </div>
+                        </div>
+                        <div class="condition-visual">
+                            <div class="clinical-img-wrap">
+                                <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?w=800&q=80" alt="Neurological clinical research">
+                            </div>
+                            <div class="visual-caption">Early diagnosis and prompt treatment significantly improve outcomes for patients with GBS. The condition is treatable, and most patients recover with appropriate medical intervention.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CIDP Tab -->
+                <div class="tab-pane" id="tab-cidp">
+                    <div class="condition-content">
+                        <div class="condition-text">
+                            <h3>Chronic Inflammatory Demyelinating Polyneuropathy (CIDP)</h3>
+                            <p>CIDP is a rare neurological disorder characterized by gradually increasing sensory loss and weakness associated with loss of reflexes. Unlike GBS, CIDP develops over months rather than days or weeks.</p>
+                            <h4>Key Characteristics</h4>
+                            <ul class="symptom-list">
+                                <li>Progressive weakness developing over at least 8 weeks</li>
+                                <li>Numbness and tingling in hands and feet</li>
+                                <li>Loss of deep tendon reflexes</li>
+                                <li>Fatigue and balance impairment</li>
+                                <li>Difficulty with fine motor tasks</li>
+                            </ul>
+                            <h4>Treatment Options</h4>
+                            <p>CIDP is treatable, and many patients respond well to established therapies:</p>
+                            <ul class="symptom-list">
+                                <li><strong>IVIG (Intravenous Immunoglobulin)</strong> — First-line treatment</li>
+                                <li><strong>Corticosteroids</strong> — Anti-inflammatory medication</li>
+                                <li><strong>Plasma Exchange</strong> — Removes harmful antibodies from circulation</li>
+                            </ul>
+                        </div>
+                        <div class="condition-visual">
+                            <div class="clinical-img-wrap">
+                                <img src="https://images.unsplash.com/photo-1582719471137-c3967ffb1c42?w=800&q=80" alt="CIDP clinical care">
+                            </div>
+                            <div class="visual-caption">With proper treatment protocols, many CIDP patients can maintain good quality of life and functional independence over the long term.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MMN Tab -->
+                <div class="tab-pane" id="tab-mmn">
+                    <div class="condition-content">
+                        <div class="condition-text">
+                            <h3>Multifocal Motor Neuropathy (MMN)</h3>
+                            <p>MMN is a rare immune-mediated neuropathy characterized by slowly progressive, asymmetric limb weakness without sensory loss. It primarily affects motor nerves and is distinct from other neuropathies.</p>
+                            <h4>Distinguishing Features</h4>
+                            <ul class="symptom-list">
+                                <li>Weakness typically begins in the hands or feet</li>
+                                <li>Asymmetric pattern — one side more affected than the other</li>
+                                <li>No sensory symptoms (numbness or tingling)</li>
+                                <li>Muscle cramps and fasciculations (twitching)</li>
+                                <li>Foot drop or progressive hand weakness</li>
+                            </ul>
+                            <div class="info-box success">
+                                <strong>Treatment Responsive</strong>
+                                MMN typically responds very well to IVIG treatment. Most patients maintain good functional ability with consistent, ongoing therapy and specialist monitoring.
+                            </div>
+                        </div>
+                        <div class="condition-visual">
+                            <div class="clinical-img-wrap">
+                                <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&q=80" alt="MMN neurology research">
+                            </div>
+                            <div class="visual-caption">February is MMN Awareness Month — helping spread understanding of this rare but treatable condition in medical communities.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section id="resources" class="section">
+        <div class="container">
+            <div class="section-header-center">
+                <span class="section-tag">Patient & Family Resources</span>
+                <h2 class="section-title">Tools to Help You Navigate Your Journey</h2>
+                <p class="section-sub">Comprehensive resources for patients, families, and healthcare professionals</p>
+            </div>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+                    </div>
+                    <h3>Educational Materials</h3>
+                    <p>Access brochures, guides, and clinical articles about GBS, CIDP, and treatment options in accessible language.</p>
+                    <a href="#publications" class="card-link">View Publications &rarr;</a>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                    </div>
+                    <h3>Educational Videos</h3>
+                    <p>Watch presentations from medical experts, patient testimonials, and recorded seminars on neurological conditions.</p>
+                    <a href="#educational-videos" class="card-link">Watch Videos &rarr;</a>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 12a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9a16 16 0 006.91 6.91l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                    </div>
+                    <h3>Find a Specialist</h3>
+                    <p>Locate neuromuscular specialists and neurologists experienced in treating GBS, CIDP, and related conditions.</p>
+                    <a href="#find-specialist" class="card-link">Find Doctors &rarr;</a>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    </div>
+                    <h3>ICU Toolkit</h3>
+                    <p>Essential clinical and practical information for patients and families navigating intensive care settings.</p>
+                    <a href="#icu-toolkit" class="card-link">Access Toolkit &rarr;</a>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+                    </div>
+                    <h3>Benefits & Services</h3>
+                    <p>Government benefits, disability support programs, and community resources available in Nepal.</p>
+                    <a href="#benefits" class="card-link">Explore Options &rarr;</a>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                    </div>
+                    <h3>For Healthcare Professionals</h3>
+                    <p>Clinical resources, diagnostic frameworks, and evidence-based treatment guidelines for practitioners.</p>
+                    <a href="#hcp" class="card-link">HCP Resources &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research" class="section section-alt">
+        <div class="container">
+            <div class="research-grid">
+                <div class="research-text">
+                    <span class="section-tag">Research & Innovation</span>
+                    <h2 class="section-title">Building the Future of Neurological Care</h2>
+                    <p>We are establishing partnerships with leading research institutions to advance understanding and treatment of GBS, CIDP, and related conditions — integrating artificial intelligence with clinical expertise.</p>
+                    <h4 style="font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-light);font-weight:600;margin-bottom:0.75rem;">Research Focus Areas</h4>
+                    <div class="focus-items">
+                        <div class="focus-item">
+                            <span class="focus-num">01</span>
+                            <div>
+                                <h4>Clinical Research</h4>
+                                <p>Supporting trials that explore new treatment protocols and improve measurable patient outcomes</p>
+                            </div>
+                        </div>
+                        <div class="focus-item">
+                            <span class="focus-num">02</span>
+                            <div>
+                                <h4>AI-Powered Diagnostics</h4>
+                                <p>Developing machine learning tools for earlier and more accurate neurological diagnosis</p>
+                            </div>
+                        </div>
+                        <div class="focus-item">
+                            <span class="focus-num">03</span>
+                            <div>
+                                <h4>Treatment Optimization</h4>
+                                <p>Using AI to personalize treatment plans and predict individual patient responses</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="research-panel">
+                        <h3>Building Our Research Program</h3>
+                        <div class="progress-item">
+                            <div class="progress-header">
+                                <span>Partnership Development</span>
+                                <span class="progress-pct">30%</span>
+                            </div>
+                            <div class="progress-bar"><div class="progress-fill" style="width:30%"></div></div>
+                        </div>
+                        <div class="progress-item">
+                            <div class="progress-header">
+                                <span>Research Framework</span>
+                                <span class="progress-pct">45%</span>
+                            </div>
+                            <div class="progress-bar"><div class="progress-fill" style="width:45%"></div></div>
+                        </div>
+                        <div class="progress-item">
+                            <div class="progress-header">
+                                <span>AI Platform Development</span>
+                                <span class="progress-pct">20%</span>
+                            </div>
+                            <div class="progress-bar"><div class="progress-fill" style="width:20%"></div></div>
+                        </div>
+                        <p class="panel-note">We are in the foundation-building phase, establishing the infrastructure for groundbreaking neurological research in Nepal.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Patient Stories -->
+    <section id="patient-stories" class="section">
+        <div class="container">
+            <div class="section-header-center">
+                <span class="section-tag">Voices of Hope</span>
+                <h2 class="section-title">Patient Stories</h2>
+                <p class="section-sub">Real experiences from individuals and families affected by GBS, CIDP, and variants</p>
+            </div>
+            <div class="stories-placeholder">
+                <p>As a newly established foundation, we are actively collecting and sharing patient stories. If you or a family member have experienced GBS, CIDP, or a related condition and would like to share your journey, please <a href="#contact">contact us</a>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Join Us in Making a Difference</h2>
+            <p>Whether through volunteering, donations, or spreading awareness — every contribution helps build a stronger foundation for patients and families across Nepal.</p>
+            <div class="cta-buttons">
+                <a href="#donate" class="btn btn-primary btn-lg" style="background:white;color:var(--blue-deep);">Make a Donation</a>
+                <a href="#contact" class="btn btn-ghost btn-lg">Get Involved</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo-wrap">
+                        <div class="footer-logo-mark">
+                            <svg width="18" height="18" viewBox="0 0 50 50" fill="none">
+                                <circle cx="25" cy="25" r="20" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
+                                <path d="M25 12 L25 38 M14 25 L36 25" stroke="rgba(255,255,255,0.5)" stroke-width="2.5" stroke-linecap="round"/>
+                                <circle cx="25" cy="25" r="3.5" fill="rgba(255,255,255,0.5)"/>
+                            </svg>
+                        </div>
+                        <div class="footer-logo-name">GBS-CIDP and NeuroAI<br>Research Foundation Nepal</div>
+                    </div>
+                    <p>Improving the quality of life for individuals and families affected by GBS, CIDP, MMN, and variants through support, education, research, and advocacy.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+                        </a>
+                        <a href="#" aria-label="Twitter / X">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        </a>
+                        <a href="#" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#conditions">Conditions</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                        <li><a href="#research">Research</a></li>
+                        <li><a href="#patient-stories">Patient Stories</a></li>
+                        <li><a href="team.html">Our Team</a></li>
+                        <li><a href="#about">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Get Involved</h4>
+                    <ul>
+                        <li><a href="#donate">Make a Donation</a></li>
+                        <li><a href="#volunteer">Volunteer</a></li>
+                        <li><a href="#events">Events</a></li>
+                        <li><a href="#fundraise">Host a Fundraiser</a></li>
+                        <li><a href="#awareness">Awareness Campaigns</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <div class="contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+                        <a href="mailto:gbscidpfoundationnepal@gmail.com">gbscidpfoundationnepal@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 12a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9a16 16 0 006.91 6.91l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                        <span>014560964</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <span>Kumarigal, Kathmandu, Nepal</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 GBS-CIDP and NeuroAI Research Foundation Nepal. All rights reserved.</p>
+                <p><a href="#privacy">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="#terms">Terms of Use</a> &nbsp;&middot;&nbsp; Charitable Registration: Pending</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll shadow
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 20);
+        });
+
+        // Mobile menu
+        document.getElementById('mobileToggle').addEventListener('click', () => {
+            document.getElementById('navMenu').classList.toggle('open');
+        });
+
+        // Hero slider
+        const slides = document.querySelectorAll('.hero-slide');
+        const dotsContainer = document.getElementById('sliderDots');
+        let currentSlide = 0;
+        let autoTimer;
+
+        // Build dots
+        slides.forEach((_, i) => {
+            const dot = document.createElement('button');
+            dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+            dot.setAttribute('aria-label', `Slide ${i + 1}`);
+            dot.addEventListener('click', () => goTo(i));
+            dotsContainer.appendChild(dot);
+        });
+
+        function goTo(n) {
+            slides[currentSlide].classList.remove('active');
+            dotsContainer.children[currentSlide].classList.remove('active');
+            currentSlide = (n + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+            dotsContainer.children[currentSlide].classList.add('active');
+        }
+
+        function next() { goTo(currentSlide + 1); }
+        function prev() { goTo(currentSlide - 1); }
+
+        document.getElementById('nextSlide').addEventListener('click', () => { next(); resetTimer(); });
+        document.getElementById('prevSlide').addEventListener('click', () => { prev(); resetTimer(); });
+
+        function resetTimer() {
+            clearInterval(autoTimer);
+            autoTimer = setInterval(next, 6000);
+        }
+        autoTimer = setInterval(next, 6000);
+
+        // Condition tabs
+        document.querySelectorAll('.tab-button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+            });
+        });
+
+        // Counter animation
+        const counterObserver = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (!e.isIntersecting) return;
+                e.target.querySelectorAll('[data-target]').forEach(el => {
+                    const target = parseInt(el.dataset.target);
+                    if (isNaN(target)) return;
+                    let cur = 0;
+                    const step = Math.max(1, Math.ceil(target / 80));
+                    const timer = setInterval(() => {
+                        cur = Math.min(cur + step, target);
+                        el.textContent = cur.toLocaleString();
+                        if (cur >= target) clearInterval(timer);
+                    }, 20);
+                });
+                counterObserver.unobserve(e.target);
+            });
+        }, { threshold: 0.4 });
+        document.querySelectorAll('.stats-grid').forEach(g => counterObserver.observe(g));
+    </script>
+</body>
+</html>
