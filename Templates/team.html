@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Meet the leadership team of GBS-CIDP and NeuroAI Research Foundation Nepal.">
+    <title>Our Team | GBS-CIDP and NeuroAI Research Foundation Nepal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --navy:   #0d1b2a;
+            --deep:   #1b2d44;
+            --blue:   #2563a8;
+            --sky:    #4a9fd4;
+            --frost:  #e8f3fb;
+            --gold:   #c8a96e;
+            --cream:  #faf8f5;
+            --mid:    #6b7a8d;
+            --light:  #f0f4f8;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--navy); }
+
+        .container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+        /* ── TOP BAR ── */
+        .top-bar { background: var(--navy); padding: 8px 0; font-size: .78rem; color: rgba(255,255,255,.55); }
+        .top-bar .container { display: flex; justify-content: space-between; align-items: center; }
+        .top-bar span { margin-right: 20px; }
+        .top-bar a { color: var(--sky); text-decoration: none; }
+
+        /* ── NAVBAR ── */
+        .navbar { background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 16px rgba(0,0,0,.06); }
+        .nav-wrapper { display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 68px; }
+        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-text { display: flex; flex-direction: column; }
+        .logo-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 700; color: var(--navy); line-height: 1; }
+        .logo-subtitle { font-size: .68rem; color: var(--mid); letter-spacing: .04em; }
+        .nav-menu { display: flex; list-style: none; gap: 4px; align-items: center; }
+        .nav-menu a { font-size: .84rem; font-weight: 500; color: var(--navy); text-decoration: none; padding: 8px 12px; border-radius: 6px; transition: background .15s, color .15s; }
+        .nav-menu a:hover { background: var(--frost); color: var(--blue); }
+        .btn-donate { background: var(--blue) !important; color: #fff !important; border-radius: 20px !important; padding: 8px 20px !important; }
+        .btn-donate:hover { background: var(--navy) !important; }
+        .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+        .mobile-toggle span { display: block; width: 22px; height: 2px; background: var(--navy); margin: 5px 0; border-radius: 2px; }
+
+        /* ── PAGE HERO ── */
+        .page-hero {
+            background: var(--navy);
+            padding: 80px 0 70px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-hero::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse at 70% 50%, rgba(37,99,168,.45) 0%, transparent 70%),
+                        radial-gradient(ellipse at 20% 80%, rgba(74,159,212,.2) 0%, transparent 60%);
+        }
+        .page-hero::after {
+            content: '';
+            position: absolute; inset: 0;
+            background-image: repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,.025) 39px, rgba(255,255,255,.025) 40px),
+                              repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(255,255,255,.025) 79px, rgba(255,255,255,.025) 80px);
+        }
+        .page-hero .container { position: relative; z-index: 1; }
+        .page-hero .breadcrumb { font-size: .78rem; color: rgba(255,255,255,.4); margin-bottom: 16px; letter-spacing: .08em; text-transform: uppercase; }
+        .page-hero .breadcrumb a { color: var(--sky); text-decoration: none; }
+        .page-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 300; color: #fff; letter-spacing: .02em; margin-bottom: 16px; line-height: 1.1; }
+        .page-hero h1 em { font-style: italic; color: var(--gold); }
+        .page-hero p { color: rgba(255,255,255,.55); font-size: .95rem; max-width: 520px; margin: 0 auto; line-height: 1.8; font-weight: 300; }
+
+        /* ── TABS ── */
+        .team-section { padding: 64px 0 80px; }
+        .team-tabs { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; margin-bottom: 52px; }
+        .team-tab-btn { background: #fff; border: 1.5px solid #dde4ed; border-radius: 30px; padding: 9px 24px; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: .82rem; cursor: pointer; color: var(--mid); transition: all .2s; letter-spacing: .02em; }
+        .team-tab-btn:hover { border-color: var(--blue); color: var(--blue); }
+        .team-tab-btn.active { background: var(--navy); border-color: var(--navy); color: #fff; }
+        .team-panel { display: none; animation: fadeUp .4s ease; }
+        .team-panel.active { display: block; }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+        .category-desc { background: linear-gradient(135deg, #fff, var(--frost)); border-left: 3px solid var(--gold); border-radius: 10px; padding: 16px 22px; margin-bottom: 36px; font-size: .88rem; color: var(--mid); line-height: 1.75; font-weight: 300; }
+
+        .section-label { font-family: 'DM Sans', sans-serif; font-size: .7rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--blue); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+
+        /* ══ BOARD CARD — tall portrait ══ */
+        .board-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 24px; margin-bottom: 48px; }
+        .board-card { background: #fff; border-radius: 18px; overflow: hidden; box-shadow: 0 2px 20px rgba(13,27,42,.07); transition: transform .25s, box-shadow .25s; }
+        .board-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(13,27,42,.14); }
+
+        .board-photo-wrap {
+            width: 100%;
+            aspect-ratio: 3 / 3.5;
+            background: linear-gradient(160deg, #1b2d44 0%, #2563a8 100%);
+            position: relative; overflow: hidden;
+        }
+        .board-photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; transition: transform .4s ease; }
+        .board-card:hover .board-photo-wrap img { transform: scale(1.04); }
+        .board-photo-wrap::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--gold), transparent); }
+
+        /* Initials shown when no image */
+        .photo-initials { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-weight: 300; color: rgba(255,255,255,.3); pointer-events: none; }
+        .board-photo-wrap .photo-initials { font-size: 3.2rem; }
+        .team-photo-wrap .photo-initials { font-size: 2.8rem; }
+        .medical-photo-wrap .photo-initials { font-size: 2rem; }
+        .advisor-photo-wrap .photo-initials { font-size: 1.4rem; }
+
+        .board-body { padding: 20px 22px 24px; }
+        .board-name { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--navy); line-height: 1.25; margin-bottom: 4px; }
+        .board-credentials { font-size: .75rem; color: var(--mid); font-style: italic; margin-bottom: 10px; }
+        .board-role { display: inline-flex; align-items: center; background: var(--frost); color: var(--blue); font-size: .72rem; font-weight: 600; padding: 4px 12px; border-radius: 20px; letter-spacing: .02em; }
+        .board-institution { font-size: .76rem; color: #aab7c4; margin-top: 8px; }
+
+        /* ══ MANAGEMENT CARD ══ */
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
+        .team-card { background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 2px 16px rgba(13,27,42,.06); border: 1px solid #edf2f7; transition: transform .22s, box-shadow .22s; }
+        .team-card:hover { transform: translateY(-5px); box-shadow: 0 12px 32px rgba(13,27,42,.11); }
+        .team-photo-wrap { width: 100%; aspect-ratio: 1/1; background: linear-gradient(145deg, #1b3a5c, #4a9fd4); position: relative; overflow: hidden; }
+        .team-photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; transition: transform .35s; }
+        .team-card:hover .team-photo-wrap img { transform: scale(1.05); }
+        .team-body { padding: 16px 18px 18px; }
+        .team-name { font-family: 'Cormorant Garamond', serif; font-size: 1.12rem; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+        .team-role { font-size: .78rem; font-weight: 600; color: var(--blue); letter-spacing: .02em; }
+
+        /* ══ MEDICAL CARD — horizontal ══ */
+        .medical-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px; }
+        .medical-card { background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 2px 14px rgba(13,27,42,.06); border: 1px solid #edf2f7; display: flex; transition: transform .22s, box-shadow .22s; }
+        .medical-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(13,27,42,.11); }
+        .medical-photo-wrap { width: 108px; min-width: 108px; background: linear-gradient(160deg, #1b2d44, #2563a8); position: relative; overflow: hidden; }
+        .medical-photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; transition: transform .35s; }
+        .medical-card:hover .medical-photo-wrap img { transform: scale(1.06); }
+        .medical-photo-wrap::after { content: ''; position: absolute; top: 0; right: 0; bottom: 0; width: 3px; background: linear-gradient(180deg, var(--gold), var(--sky)); }
+        .medical-info { padding: 16px 18px; display: flex; flex-direction: column; justify-content: center; }
+        .medical-name { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 600; color: var(--navy); margin-bottom: 2px; }
+        .medical-credentials { font-size: .72rem; color: var(--mid); font-style: italic; margin-bottom: 8px; }
+        .medical-spec { display: inline-block; background: var(--frost); color: var(--blue); font-size: .68rem; font-weight: 600; padding: 3px 10px; border-radius: 20px; letter-spacing: .03em; margin-bottom: 5px; }
+        .medical-institution { font-size: .73rem; color: #aab7c4; font-style: italic; }
+
+        /* ══ ADVISOR CARD ══ */
+        .advisors-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+        .advisor-card { background: #fff; border: 1.5px solid #e2ebf4; border-radius: 14px; padding: 20px; display: flex; align-items: center; gap: 16px; box-shadow: 0 2px 10px rgba(13,27,42,.04); transition: border-color .2s, transform .2s, box-shadow .2s; }
+        .advisor-card:hover { border-color: var(--sky); transform: translateY(-3px); box-shadow: 0 8px 22px rgba(13,27,42,.09); }
+        .advisor-photo-wrap { width: 58px; height: 58px; min-width: 58px; border-radius: 50%; background: linear-gradient(135deg, #2563a8, #4a9fd4); position: relative; overflow: hidden; box-shadow: 0 3px 10px rgba(37,99,168,.25); }
+        .advisor-photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+        .advisor-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; color: var(--navy); }
+        .advisor-label { font-size: .73rem; color: var(--mid); margin-top: 3px; letter-spacing: .03em; }
+
+        /* ── CTA ── */
+        .cta-section { background: var(--navy); padding: 64px 0; text-align: center; }
+        .cta-section h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 300; color: #fff; margin-bottom: 14px; }
+        .cta-section p { color: rgba(255,255,255,.55); max-width: 480px; margin: 0 auto 28px; font-size: .92rem; line-height: 1.75; }
+        .cta-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+        .btn { display: inline-block; padding: 12px 28px; border-radius: 30px; font-weight: 600; font-size: .88rem; text-decoration: none; transition: all .2s; }
+        .btn-primary { background: var(--gold); color: var(--navy); }
+        .btn-primary:hover { background: #d4b87a; }
+        .btn-outline { border: 1.5px solid rgba(255,255,255,.35); color: #fff; }
+        .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,.08); }
+
+        /* ── FOOTER ── */
+        .footer { background: #080f18; color: rgba(255,255,255,.5); padding: 56px 0 28px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.4fr; gap: 36px; margin-bottom: 40px; }
+        .footer-col h4 { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: #fff; margin-bottom: 16px; font-weight: 600; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 9px; }
+        .footer-col ul li a { color: rgba(255,255,255,.45); text-decoration: none; font-size: .82rem; transition: color .15s; }
+        .footer-col ul li a:hover { color: var(--sky); }
+        .footer-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+        .footer-logo h3 { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: rgba(255,255,255,.75); font-weight: 400; }
+        .footer-col > p { font-size: .82rem; line-height: 1.75; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,.06); padding-top: 22px; font-size: .76rem; text-align: center; }
+        .footer-bottom a { color: rgba(255,255,255,.35); text-decoration: none; }
+        .social-links { display: flex; gap: 12px; margin-top: 18px; }
+        .social-links a { color: rgba(255,255,255,.35); transition: color .15s; }
+        .social-links a:hover { color: var(--sky); }
+        .contact-info li { display: flex; align-items: flex-start; gap: 8px; font-size: .82rem; margin-bottom: 9px; }
+        .contact-info li svg { flex-shrink: 0; margin-top: 2px; opacity: .45; }
+        .contact-info li a { color: rgba(255,255,255,.45); text-decoration: none; }
+        .contact-info li a:hover { color: var(--sky); }
+
+        @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 600px) {
+            .board-grid, .team-grid, .medical-grid, .advisors-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .nav-menu { display: none; flex-direction: column; position: absolute; top: 68px; left: 0; right: 0; background: #fff; padding: 16px; box-shadow: 0 8px 24px rgba(0,0,0,.1); }
+            .nav-menu.open { display: flex; }
+            .mobile-toggle { display: block; }
+            .medical-photo-wrap { width: 88px; min-width: 88px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-bar">
+    <div class="container">
+        <div><span>📞 014560964</span><span>📧 gbscidpfoundationnepal@gmail.com</span></div>
+        <a href="#">NP</a>
+    </div>
+</div>
+
+<nav class="navbar" id="navbar">
+    <div class="container">
+        <div class="nav-wrapper">
+            <a href="index.html" class="logo">
+                <img src="gbss.png" width="52" height="52" alt="Logo">
+                <div class="logo-text">
+                    <span class="logo-title">GBS-CIDP</span>
+                    <span class="logo-subtitle">NeuroAI Research Foundation Nepal</span>
+                </div>
+            </a>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html#conditions">Conditions</a></li>
+                <li><a href="index.html#resources">Resources</a></li>
+                <li><a href="index.html#research">Research</a></li>
+                <li><a href="index.html#patient-stories">Patient Stories</a></li>
+                <li><a href="team.html" style="color:var(--blue);font-weight:600;">Team</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#donate" class="btn-donate">Donate</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="page-hero">
+    <div class="container">
+        <div class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; Our Team</div>
+        <h1>Our <em>Leadership</em> Team</h1>
+        <p>Meet the dedicated board members, clinicians, researchers, and advocates driving our mission forward.</p>
+    </div>
+</div>
+
+<section class="team-section">
+    <div class="container">
+
+        <div class="team-tabs">
+            <button class="team-tab-btn active" data-panel="board">Board of Directors</button>
+            <button class="team-tab-btn" data-panel="management">Management</button>
+            <button class="team-tab-btn" data-panel="medical">Medical Board</button>
+            <button class="team-tab-btn" data-panel="advisors">Advisors</button>
+        </div>
+
+        <!-- ══ BOARD ══ -->
+        <div id="board" class="team-panel active">
+            <div class="category-desc">The Board of Directors provides strategic leadership and overall governance of the foundation. Adjunct Directors bring specialized expertise in AI research, clinical research, and international relations.</div>
+
+            <div class="section-label">Board of Directors</div>
+            <div class="board-grid">
+
+                <!-- To add a photo: set src="images/saishna.jpg" (or any path/URL) -->
+                <div class="board-card">
+                    <div class="board-photo-wrap">
+                        <img src="D:\GBS WEBSITE\GBS\Images\saishna.jpg" alt="Er. Saishna Budhathoki">
+                        <!-- <div class="photo-initials">SB</div> -->
+                    </div>
+                    <div class="board-body">
+                        <div class="board-name">Er. Saishna Budhathoki</div>
+                        <div class="board-credentials"> Software / AI Engineer</div>
+                        <div class="board-role">Executive Director &amp; Founding President</div>
+                    </div>
+                </div>
+
+                <div class="board-card">
+                    <div class="board-photo-wrap">
+                        <img src="D:\GBS WEBSITE\GBS\Images\ghanashyam.jpg" alt="Dr. Ghanashyam Kharel">
+                        <!-- <div class="photo-initials">GK</div> -->
+                    </div>
+                    <div class="board-body">
+                        <div class="board-name">Dr. Ghanashyam Kharel</div>
+                        <div class="board-credentials">Sr. Consultant Neurologist</div>
+                        <div class="board-role">Vice President</div>
+                        <div class="board-institution">UDMNINAS</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="section-label" style="margin-top:40px;">adj. Directors</div>
+            <div class="board-grid">
+
+                <div class="board-card">
+                    <div class="board-photo-wrap">
+                        <img src="D:\GBS WEBSITE\GBS\Images\thomas.jpeg" alt="Er. Thomas Basyal">
+                        <!-- <div class="photo-initials">TB</div> -->
+                    </div>
+                    <div class="board-body">
+                        <div class="board-name">Er. Thomas Basyal</div>
+                        <div class="board-credentials">IT / AI Engineer (IIT)</div>
+                        <div class="board-role">Adj. AI Research Director</div>
+                    </div>
+                </div>
+
+                <div class="board-card">
+                    <div class="board-photo-wrap">
+                        <img src="D:\GBS WEBSITE\GBS\Images\diptesh.jpg" alt="Dr. Diptesh Aryal">
+                        <!-- <div class="photo-initials">DA</div> -->
+                    </div>
+                    <div class="board-body">
+                        <div class="board-name">Dr. Diptesh Aryal</div>
+                        <div class="board-credentials">MD, PhD</div>
+                        <div class="board-role">Adj. Clinical Research Director</div>
+                        <div class="board-institution">Critical Care</div>
+                    </div>
+                </div>
+
+                <div class="board-card">
+                    <div class="board-photo-wrap">
+                        <img src="" alt="Dr. K. K. Oli">
+                        <div class="photo-initials">KO</div>
+                    </div>
+                    <div class="board-body">
+                        <div class="board-name">Dr. K. K. Oli</div>
+                        <div class="board-credentials">MD, DM PhD</div>
+                        <div class="board-role">Adj. Clinical Research Director</div>
+                        <div class="board-institution">Neurology</div>
+                    </div>
+                </div>
+
+                <div class="board-card">
+                    <div class="board-photo-wrap">
+                        <img src="D:\GBS WEBSITE\GBS\Images\chetan.jpeg" alt="Chetan Poudyal">
+                        <!-- <div class="photo-initials">CP</div> -->
+                    </div>
+                    <div class="board-body">
+                        <div class="board-name">Chetan Poudyal</div>
+                        <div class="board-credentials">IT</div>
+                        <div class="board-role">Adj. Foreign Affairs Director</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ══ MANAGEMENT ══ -->
+         <div> </div>
+        <div id="management" class="team-panel">
+            <div class="category-desc">Our management team handles day-to-day operations, communications, and outreach — keeping the foundation connected with patients, partners, and the public.</div>
+            <div class="team-grid">
+
+                <div class="team-card">
+                    <div class="team-photo-wrap">
+                        <img src="D:\GBS WEBSITE\GBS\Images\nishil.png" alt="Nishil Poudyal">
+                        <div class="photo-initials">NP</div>
+                    </div>
+                    <div class="team-body">
+                        <div class="team-name">Nishil Poudyal</div>
+                        <div class="team-role">Social Media Chief</div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-photo-wrap">
+                        <img src="" alt="Sirjana KC">
+                        <div class="photo-initials">SK</div>
+                    </div>
+                    <div class="team-body">
+                        <div class="team-name">Sirjana KC</div>
+                        <div class="team-role">Communication Chief</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ══ MEDICAL BOARD ══ -->
+        <div id="medical" class="team-panel">
+            <div class="category-desc">Our Medical Board comprises leading neurologists, critical care specialists, and allied health professionals who provide clinical oversight and expertise to our research programs.</div>
+            <div class="medical-grid">
+
+                <div class="medical-card">
+                    <div class="medical-photo-wrap">
+                        <img src="" alt="Dr. Diptesh Aryal">
+                        <div class="photo-initials">DA</div>
+                    </div>
+                    <div class="medical-info">
+                        <div class="medical-name">Dr. Diptesh Aryal</div>
+                        <div class="medical-credentials">MD, PhD</div>
+                        <span class="medical-spec">Critical Care</span>
+                        <div class="medical-institution">TUTH · Mediciti</div>
+                    </div>
+                </div>
+
+                <div class="medical-card">
+                    <div class="medical-photo-wrap">
+                        <img src="" alt="Prof. Dr. Subhash P. Acharya">
+                        <div class="photo-initials">SA</div>
+                    </div>
+                    <div class="medical-info">
+                        <div class="medical-name">Prof. Dr. Subhash P. Acharya</div>
+                        <div class="medical-credentials">MD, FACC, FCCP, FFCMO, FAMV</div>
+                        <span class="medical-spec">Critical Care / Cardiology</span>
+                        <div class="medical-institution">TUTH · Grande</div>
+                    </div>
+                </div>
+
+                <div class="medical-card">
+                    <div class="medical-photo-wrap">
+                        <img src="" alt="Prof. Dr. K. K. Oli">
+                        <div class="photo-initials">KO</div>
+                    </div>
+                    <div class="medical-info">
+                        <div class="medical-name">Prof. Dr. K. K. Oli</div>
+                        <div class="medical-credentials">MD, DM PhD</div>
+                        <span class="medical-spec">Neurology</span>
+                        <div class="medical-institution">TUTH · KMC</div>
+                    </div>
+                </div>
+
+                <div class="medical-card">
+                    <div class="medical-photo-wrap">
+                        <img src="" alt="Dr. Parash Rayamajhi">
+                        <div class="photo-initials">PR</div>
+                    </div>
+                    <div class="medical-info">
+                        <div class="medical-name">Dr. Parash Rayamajhi</div>
+                        <div class="medical-credentials">MD, DM</div>
+                        <span class="medical-spec">Neurology</span>
+                        <div class="medical-institution">TUTH · KMC</div>
+                    </div>
+                </div>
+
+                <div class="medical-card">
+                    <div class="medical-photo-wrap">
+                        <img src="" alt="Dr. Rajiv Ojha">
+                        <div class="photo-initials">RO</div>
+                    </div>
+                    <div class="medical-info">
+                        <div class="medical-name">Dr. Rajiv Ojha</div>
+                        <div class="medical-credentials">MD, DM</div>
+                        <span class="medical-spec">Neurology</span>
+                        <div class="medical-institution">TUTH</div>
+                    </div>
+                </div>
+
+                <div class="medical-card">
+                    <div class="medical-photo-wrap">
+                        <img src="" alt="Dr. Bikram Prasad Garjurel">
+                        <div class="photo-initials">BG</div>
+                    </div>
+                    <div class="medical-info">
+                        <div class="medical-name">Dr. Bikram Prasad Garjurel</div>
+                        <div class="medical-credentials">MD, DM</div>
+                        <span class="medical-spec">Neurology</span>
+                        <div class="medical-institution">TUTH</div>
+                    </div>
+                </div>
+
+                <div class="medical-card">
+                    <div class="medical-photo-wrap">
+                        <img src="" alt="Dr. Ragesh Karna">
+                        <div class="photo-initials">RK</div>
+                    </div>
+                    <div class="medical-info">
+                        <div class="medical-name">Dr. Ragesh Karna</div>
+                        <div class="medical-credentials">MD, DM</div>
+                        <span class="medical-spec">Neurology</span>
+                        <div class="medical-institution">TUTH</div>
+                    </div>
+                </div>
+
+                <div class="medical-card">
+                    <div class="medical-photo-wrap">
+                        <img src="" alt="Pt. Prayoush Neupane">
+                        <div class="photo-initials">PN</div>
+                    </div>
+                    <div class="medical-info">
+                        <div class="medical-name">Pt. Prayoush Neupane</div>
+                        <div class="medical-credentials">&nbsp;</div>
+                        <span class="medical-spec">Physiotherapy</span>
+                        <div class="medical-institution">TUTH</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ══ ADVISORS ══ -->
+        <div id="advisors" class="team-panel">
+            <div class="category-desc">Our advisors bring valuable external perspectives and expertise, supporting the foundation's growth and strategic direction.</div>
+            <div class="advisors-grid">
+
+                <div class="advisor-card">
+                    <div class="advisor-photo-wrap">
+                        <img src="" alt="Ujol KC">
+                        <div class="photo-initials">UK</div>
+                    </div>
+                    <div>
+                        <div class="advisor-name">Ujol KC</div>
+                        <div class="advisor-label">Advisor</div>
+                    </div>
+                </div>
+
+                <div class="advisor-card">
+                    <div class="advisor-photo-wrap">
+                        <img src="" alt="Saradha Trital">
+                        <div class="photo-initials">ST</div>
+                    </div>
+                    <div>
+                        <div class="advisor-name">Saradha Trital</div>
+                        <div class="advisor-label">Advisor</div>
+                    </div>
+                </div>
+
+                <div class="advisor-card">
+                    <div class="advisor-photo-wrap">
+                        <img src="" alt="Surya Phutshila">
+                        <div class="photo-initials">SP</div>
+                    </div>
+                    <div>
+                        <div class="advisor-name">Surya Phutshila</div>
+                        <div class="advisor-label">Advisor</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <h2>Join Us in Making a Difference</h2>
+        <p>Whether through volunteering, donations, or spreading awareness, every contribution helps build a stronger foundation for patients and families.</p>
+        <div class="cta-buttons">
+            <a href="index.html#donate" class="btn btn-primary">Make a Donation</a>
+            <a href="index.html#contact" class="btn btn-outline">Get Involved</a>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <svg width="36" height="36" viewBox="0 0 50 50" fill="none"><circle cx="25" cy="25" r="23" stroke="#4a9fd4" stroke-width="2"/><path d="M25 10 L25 40 M15 25 L35 25" stroke="#4a9fd4" stroke-width="2.5"/><circle cx="25" cy="25" r="4" fill="#4a9fd4"/></svg>
+                    <h3>GBS-CIDP and NeuroAI Research Foundation Nepal</h3>
+                </div>
+                <p>Improving the quality of life for individuals and families affected by GBS, CIDP, MMN, and variants through support, education, research, and advocacy.</p>
+                <div class="social-links">
+                    <a href="#"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg></a>
+                    <a href="#"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg></a>
+                    <a href="#"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/></svg></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html#conditions">Conditions</a></li>
+                    <li><a href="index.html#resources">Resources</a></li>
+                    <li><a href="index.html#research">Research</a></li>
+                    <li><a href="index.html#patient-stories">Patient Stories</a></li>
+                    <li><a href="team.html">Our Team</a></li>
+                    <li><a href="index.html#about">About Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Get Involved</h4>
+                <ul>
+                    <li><a href="index.html#donate">Make a Donation</a></li>
+                    <li><a href="index.html#volunteer">Volunteer</a></li>
+                    <li><a href="index.html#events">Events</a></li>
+                    <li><a href="index.html#fundraise">Host a Fundraiser</a></li>
+                    <li><a href="index.html#awareness">Awareness Campaigns</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <ul class="contact-info">
+                    <li><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg><a href="mailto:gbscidpfoundationnepal@gmail.com">gbscidpfoundationnepal@gmail.com</a></li>
+                    <li><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg><span>014560964</span></li>
+                    <li><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg><span>Kumarigal, Kathmandu</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 GBS-CIDP and NeuroAI Research Foundation Nepal. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Mobile menu
+    document.getElementById('mobileToggle').addEventListener('click', () => {
+        document.getElementById('navMenu').classList.toggle('open');
+    });
+
+    // Tab switching
+    document.querySelectorAll('.team-tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.team-tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.team-panel').forEach(p => p.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById(btn.dataset.panel).classList.add('active');
+        });
+    });
+
+    // Hash-based panel open
+    const hash = window.location.hash.replace('#', '');
+    if (hash && document.getElementById(hash)) {
+        document.querySelectorAll('.team-tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.team-panel').forEach(p => p.classList.remove('active'));
+        const btn = document.querySelector(`[data-panel="${hash}"]`);
+        if (btn) btn.classList.add('active');
+        document.getElementById(hash).classList.add('active');
+    }
+
+    // Show initials fallback when image src is empty or broken;
+    // hide initials when image loads successfully
+    document.querySelectorAll('[class*="photo-wrap"] img').forEach(img => {
+        const wrap = img.parentElement;
+        const initials = wrap.querySelector('.photo-initials');
+
+        function showInitials() {
+            img.style.display = 'none';
+            if (initials) initials.style.opacity = '1';
+        }
+        function showPhoto() {
+            img.style.display = 'block';
+            if (initials) initials.style.opacity = '0';
+        }
+
+        // On load — if src is blank, show initials immediately
+        if (!img.getAttribute('src') || img.getAttribute('src') === '') {
+            showInitials();
+        } else {
+            img.addEventListener('load', showPhoto);
+            img.addEventListener('error', showInitials);
+        }
+    });
+</script>
+
+</body>
+</html>
