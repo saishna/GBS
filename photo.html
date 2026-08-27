@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="ICU Toolkit — What to expect during ICU admission for GBS patients. GBS-CIDP and NeuroAI Research Foundation Nepal.">
-    <title>ICU Toolkit | GBS-CIDP &amp; NeuroAI Research Foundation Nepal</title>
+    <!-- ① UPDATE title and description -->
+    <meta name="description" content="GBS-CIDP and NeuroAI Research Foundation Nepal — [page description].">
+    <title> GBS-CIDP &amp; NeuroAI Research Foundation Nepal</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-
+      <link rel="stylesheet" href="style.css"> 
     <style>
         /* ============================================
            RESET & VARIABLES
@@ -126,6 +127,7 @@
             gap: 0.85rem;
             color: var(--blue-deep);
         }
+        /* Logo mark matches index.html — 90px circular image */
         .logo-mark {
             width: 90px; height: 90px;
             border-radius: 50%;
@@ -215,7 +217,7 @@
         }
 
         /* ============================================
-           PAGE HERO BANNER
+           PAGE HERO BANNER (inner pages)
         ============================================ */
         .page-hero {
             background: var(--blue-deep);
@@ -264,13 +266,17 @@
         .btn-ghost:hover { background: rgba(255,255,255,0.1); color: var(--white); border-color: rgba(255,255,255,0.7); }
         .btn-outline-dark { background: transparent; color: var(--blue-deep); border: 1.5px solid var(--blue-deep); }
         .btn-outline-dark:hover { background: var(--blue-deep); color: var(--white); }
+        .btn-white { background: var(--white); color: var(--blue-deep); }
+        .btn-white:hover { background: var(--off-white); transform: translateY(-1px); }
         .btn-lg { padding: 1rem 2.2rem; font-size: 0.95rem; }
+        .btn-sm { padding: 0.55rem 1.25rem; font-size: 0.82rem; }
 
         /* ============================================
            SECTION DEFAULTS
         ============================================ */
         .section { padding: 5.5rem 0; }
         .section-alt  { background: var(--warm-white); }
+        .section-dark { background: var(--blue-deep); color: var(--white); }
 
         .section-tag {
             display: inline-block;
@@ -281,6 +287,8 @@
             color: var(--blue-bright);
             margin-bottom: 1rem;
         }
+        .section-dark .section-tag { color: rgba(255,255,255,0.5); }
+
         .section-title {
             font-family: var(--font-display);
             font-size: clamp(2rem, 3.5vw, 3rem);
@@ -288,118 +296,261 @@
             color: var(--blue-deep);
             margin-bottom: 1rem;
         }
+        .section-dark .section-title { color: var(--white); }
+
         .section-sub {
             font-size: 1rem;
             color: var(--text-light);
-            max-width: 640px;
+            max-width: 580px;
             line-height: 1.75;
         }
+        .section-dark .section-sub { color: rgba(255,255,255,0.6); }
         .section-header-center { text-align: center; }
         .section-header-center .section-sub { margin: 0 auto; }
 
         /* ============================================
-           ICU TOOLKIT — CONTENT BLOCKS
+           GENERIC CARD
         ============================================ */
-        .toolkit-block { margin-bottom: 3.5rem; }
-        .toolkit-block:last-child { margin-bottom: 0; }
-        .toolkit-block h2 {
-            font-size: 1.65rem;
-            font-weight: 500;
-            margin-bottom: 0.85rem;
+        .card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 2rem 1.75rem;
+            transition: var(--transition);
+            display: flex; flex-direction: column;
         }
-        .toolkit-block > p {
+        .card:hover { border-color: var(--blue-bright); box-shadow: var(--shadow-md); transform: translateY(-3px); }
+        .card-icon {
+            width: 44px; height: 44px;
+            background: var(--blue-pale);
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 1.25rem;
+        }
+        .card-icon svg { width: 20px; height: 20px; color: var(--blue-mid); }
+        .card h3 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 500; margin-bottom: 0.5rem; }
+        .card p  { font-size: 0.875rem; color: var(--text-light); flex-grow: 1; margin-bottom: 1.25rem; line-height: 1.65; }
+        .card-link { font-size: 0.83rem; font-weight: 600; color: var(--blue-bright); letter-spacing: 0.02em; }
+        .card-link:hover { color: var(--blue-deep); }
+
+        /* ============================================
+           INFO BOXES
+        ============================================ */
+        .info-box {
+            background: #FFF8E7;
+            border-left: 3px solid #E6A817;
+            padding: 1rem 1.25rem;
+            border-radius: 0 6px 6px 0;
+            margin-top: 1.5rem;
+            font-size: 0.87rem;
             color: var(--text-mid);
-            font-size: 0.975rem;
+        }
+        .info-box.success { background: #EAF7F0; border-color: var(--teal); }
+        .info-box.info    { background: var(--blue-pale); border-color: var(--blue-bright); }
+        .info-box strong  { display: block; margin-bottom: 0.35rem; color: var(--text-dark); }
+
+        /* ============================================
+           ABOUT / VALUE LIST (reusable)
+        ============================================ */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 1fr;
+            gap: 5rem;
+            align-items: start;
+        }
+        .about-content p {
+            color: var(--text-mid);
             line-height: 1.85;
             margin-bottom: 1.25rem;
-            max-width: 780px;
+            font-size: 0.975rem;
         }
-
-        .role-grid, .item-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-        .role-item, .item-card {
-            display: flex;
-            gap: 0.85rem;
-            align-items: flex-start;
-            padding: 1.1rem 1.25rem;
+        .value-list { margin-top: 2rem; display: flex; flex-direction: column; gap: 0.75rem; }
+        .value-item {
+            display: flex; gap: 1rem; align-items: flex-start;
+            padding: 1rem 1.25rem;
             background: var(--white);
             border: 1px solid var(--border);
             border-radius: 8px;
             transition: var(--transition);
         }
-        .role-item:hover, .item-card:hover { border-color: var(--blue-bright); box-shadow: var(--shadow-sm); }
-        .role-dot, .item-dot {
+        .value-item:hover { border-color: var(--blue-bright); box-shadow: var(--shadow-sm); }
+        .value-dot {
             width: 8px; height: 8px;
             background: var(--blue-bright);
             border-radius: 50%;
             flex-shrink: 0;
-            margin-top: 0.4rem;
+            margin-top: 0.35rem;
         }
-        .role-item strong, .item-card strong { display: block; font-size: 0.92rem; color: var(--blue-deep); margin-bottom: 0.15rem; }
-        .role-item p, .item-card p { margin: 0; font-size: 0.83rem; color: var(--text-light); line-height: 1.55; }
+        .value-item strong { display: block; font-size: 0.9rem; color: var(--blue-deep); margin-bottom: 0.2rem; }
+        .value-item p { margin: 0; font-size: 0.83rem; color: var(--text-light); }
 
-        .equip-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 0.65rem;
-            margin-top: 1.25rem;
+        /* ============================================
+           MISSION CARD (reusable)
+        ============================================ */
+        .mission-card {
+            background: var(--blue-deep);
+            color: var(--white);
+            border-radius: 12px;
+            padding: 2.5rem;
+            position: sticky;
+            top: 90px;
         }
-        .equip-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-            font-size: 0.92rem;
-            color: var(--text-mid);
-            line-height: 1.6;
+        .mission-card h4 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--white);
+            margin-bottom: 2rem;
         }
-        .equip-list li::before {
-            content: '';
-            width: 5px; height: 5px;
-            background: var(--blue-bright);
-            border-radius: 50%;
+        .mission-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
+        .mission-list li {
+            display: flex; gap: 1.25rem; align-items: flex-start;
+            padding: 1.25rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .mission-list li:last-child { border-bottom: none; }
+        .mission-num {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: rgba(255,255,255,0.25);
+            line-height: 1;
             flex-shrink: 0;
-            margin-top: 0.55rem;
+            min-width: 2rem;
         }
+        .mission-info strong { display: block; font-size: 0.95rem; font-weight: 600; color: rgba(255,255,255,0.95); margin-bottom: 0.25rem; }
+        .mission-info p { margin: 0; font-size: 0.82rem; color: rgba(255,255,255,0.5); line-height: 1.5; }
 
-        .tip-category {
+        /* ============================================
+           CONDITIONS / TABS (reusable)
+        ============================================ */
+        .tab-buttons {
+            display: flex; gap: 0; border-bottom: 2px solid var(--border);
+            margin-bottom: 3rem;
+        }
+        .tab-button {
+            padding: 0.9rem 2rem;
+            background: none; border: none;
+            font-family: var(--font-body);
+            font-size: 0.875rem; font-weight: 500;
+            color: var(--text-light);
+            cursor: pointer;
+            position: relative;
+            transition: var(--transition);
+            letter-spacing: 0.03em;
+        }
+        .tab-button::after {
+            content: '';
+            position: absolute; bottom: -2px; left: 0; right: 0;
+            height: 2px; background: var(--blue-deep);
+            transform: scaleX(0);
+            transition: transform var(--transition);
+        }
+        .tab-button:hover { color: var(--blue-deep); }
+        .tab-button.active { color: var(--blue-deep); font-weight: 600; }
+        .tab-button.active::after { transform: scaleX(1); }
+        .tab-pane { display: none; animation: fadeIn 0.4s ease; }
+        .tab-pane.active { display: block; }
+
+        .condition-content {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+        .condition-text h3 { font-family: var(--font-display); font-size: 2rem; font-weight: 400; margin-bottom: 1rem; }
+        .condition-text p  { color: var(--text-mid); line-height: 1.85; font-size: 0.95rem; margin-bottom: 1rem; }
+        .condition-text h4 { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-light); margin: 1.5rem 0 0.75rem; }
+        .symptom-list, .treatment-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+        .symptom-list li, .treatment-list li { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.9rem; color: var(--text-mid); line-height: 1.6; }
+        .symptom-list li::before { content: ''; width: 5px; height: 5px; background: var(--blue-bright); border-radius: 50%; flex-shrink: 0; margin-top: 0.5rem; }
+
+        .condition-visual { position: sticky; top: 90px; }
+        .clinical-img-wrap { border-radius: 10px; overflow: hidden; aspect-ratio: 4/3; background: var(--off-white); box-shadow: var(--shadow-md); }
+        .clinical-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+        .clinical-img-wrap:hover img { transform: scale(1.03); }
+        .visual-caption { margin-top: 1rem; padding: 0.85rem 1rem; background: var(--warm-white); border-radius: 6px; font-size: 0.82rem; color: var(--text-light); line-height: 1.6; }
+
+        /* ============================================
+           RESOURCES GRID (reusable)
+        ============================================ */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            margin-top: 3rem;
+        }
+        .resource-card {
             background: var(--white);
             border: 1px solid var(--border);
             border-radius: 10px;
-            padding: 1.5rem 1.65rem;
+            padding: 2rem 1.75rem;
+            transition: var(--transition);
+            display: flex; flex-direction: column;
         }
-        .tip-category h4 {
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--text-light);
-            margin-bottom: 0.9rem;
-        }
-        .tip-category ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
-        .tip-category li { font-size: 0.88rem; color: var(--text-mid); }
-        .tip-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
+        .resource-card:hover { border-color: var(--blue-bright); box-shadow: var(--shadow-md); transform: translateY(-3px); }
+        .resource-icon { width: 44px; height: 44px; background: var(--blue-pale); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; }
+        .resource-icon svg { width: 20px; height: 20px; color: var(--blue-mid); }
+        .resource-card h3 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 500; margin-bottom: 0.6rem; }
+        .resource-card p  { font-size: 0.875rem; color: var(--text-light); flex-grow: 1; margin-bottom: 1.25rem; line-height: 1.65; }
 
-        .info-box {
-            background: #FFF8E7;
-            border-left: 3px solid #E6A817;
-            padding: 1.1rem 1.35rem;
-            border-radius: 0 6px 6px 0;
-            margin-top: 1.5rem;
-            font-size: 0.9rem;
-            color: var(--text-mid);
-            max-width: 780px;
+        /* ============================================
+           RESEARCH (reusable)
+        ============================================ */
+        .research-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 5rem; align-items: start; }
+        .focus-items { display: flex; flex-direction: column; gap: 1px; background: var(--border); border-radius: 8px; overflow: hidden; }
+        .focus-item { display: flex; gap: 1.25rem; align-items: flex-start; padding: 1.5rem; background: var(--white); transition: var(--transition); }
+        .focus-item:hover { background: var(--warm-white); }
+        .focus-num { font-family: var(--font-display); font-size: 1.5rem; font-weight: 300; color: var(--blue-bright); opacity: 0.5; flex-shrink: 0; min-width: 2rem; }
+        .focus-item h4 { font-size: 0.95rem; margin-bottom: 0.25rem; }
+        .focus-item p  { font-size: 0.85rem; color: var(--text-light); margin: 0; line-height: 1.6; }
+
+        .research-panel { background: var(--warm-white); border: 1px solid var(--border); border-radius: 12px; padding: 2.25rem; position: sticky; top: 90px; }
+        .research-panel h3 { font-family: var(--font-display); font-size: 1.35rem; font-weight: 400; margin-bottom: 1.75rem; }
+        .progress-item { margin-bottom: 1.5rem; }
+        .progress-header { display: flex; justify-content: space-between; font-size: 0.83rem; margin-bottom: 0.5rem; }
+        .progress-pct { font-weight: 600; color: var(--blue-deep); }
+        .progress-bar { height: 5px; background: var(--off-white); border-radius: 10px; overflow: hidden; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--blue-deep), var(--blue-bright)); border-radius: 10px; }
+        .panel-note { font-size: 0.8rem; color: var(--text-light); font-style: italic; line-height: 1.6; margin: 0; }
+
+        /* ============================================
+           STATS BAR (reusable)
+        ============================================ */
+        .stats-bar { background: var(--white); border-bottom: 1px solid var(--border); }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+        .stat-item { padding: 1.75rem 1.5rem; text-align: center; border-right: 1px solid var(--border); }
+        .stat-item:last-child { border-right: none; }
+        .stat-value { font-family: var(--font-display); font-size: 2.6rem; font-weight: 500; color: var(--blue-deep); line-height: 1; }
+        .stat-label { font-size: 0.75rem; color: var(--text-light); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 0.4rem; }
+
+        /* ============================================
+           PATIENT STORIES SLIDER (reusable)
+        ============================================ */
+        #storiesSlider {
+            position: relative;
+            margin-top: 3.5rem;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(10,37,64,0.12);
         }
-        .info-box strong { display: block; margin-bottom: 0.35rem; color: var(--text-dark); }
+        .pstory-slide { display: none; }
+        .pstory-inner { display: grid; grid-template-columns: 1fr 1fr; height: 280px; align-items: stretch; }
+        .pstory-img-wrap { position: relative; overflow: hidden; }
+        .pstory-img-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; display: block; }
+        .pstory-img-overlay { position: absolute; inset: 0; }
+        .pstory-badge { position: absolute; top: 1.25rem; left: 1.25rem; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: white; padding: 0.3rem 0.85rem; border-radius: 20px; backdrop-filter: blur(4px); }
+        .pstory-content { padding: 1.75rem 2rem; display: flex; flex-direction: column; justify-content: center; }
+        .pstory-quote-mark { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.8rem; color: rgba(255,255,255,0.15); line-height: 0.8; margin-bottom: 0.75rem; }
+        .pstory-quote { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 0.97rem; color: rgba(255,255,255,0.9); line-height: 1.75; font-style: italic; margin-bottom: 1rem; flex-grow: 1; }
+        .pstory-author { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.85rem; }
+        .pstory-author-name { font-weight: 600; font-size: 0.95rem; color: white; margin-bottom: 0.2rem; }
+        .pstory-author-meta { font-size: 0.78rem; color: rgba(255,255,255,0.5); }
+        #psPrev, #psNext { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); color: white; display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(4px); transition: background 0.3s; z-index: 10; }
+        #psPrev { left: 1rem; }
+        #psNext { right: 1rem; }
+        #psPrev:hover, #psNext:hover { background: rgba(255,255,255,0.28); }
+        #psCounter { position: absolute; bottom: 1rem; right: 1.5rem; font-size: 0.75rem; color: rgba(255,255,255,0.4); letter-spacing: 0.08em; z-index: 10; }
 
         /* ============================================
            CTA SECTION
@@ -438,6 +589,14 @@
         .footer-bottom a:hover { color: rgba(255,255,255,0.7); }
 
         /* ============================================
+           ANIMATIONS
+        ============================================ */
+        @keyframes fadeIn  { from { opacity: 0; }                             to { opacity: 1; } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .anim-fade-in  { animation: fadeIn  0.6s ease forwards; }
+        .anim-slide-up { animation: slideUp 0.7s ease forwards; }
+
+        /* ============================================
            RESPONSIVE
         ============================================ */
         @media (max-width: 992px) {
@@ -456,17 +615,43 @@
             .mobile-toggle { display: flex; }
             .navbar { position: relative; }
             .nav-wrapper { position: relative; }
-            .role-grid, .item-grid, .tip-grid { grid-template-columns: repeat(2, 1fr); }
+            .about-grid, .condition-content, .research-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .mission-card, .condition-visual, .research-panel { position: static; }
+            .resources-grid { grid-template-columns: repeat(2, 1fr); }
             .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .stat-item:nth-child(2) { border-right: none; }
+            .stat-item:nth-child(3) { border-right: 1px solid var(--border); }
+            .stat-item { border-top: 1px solid var(--border); }
+            .stat-item:first-child, .stat-item:nth-child(2) { border-top: none; }
+        }
+
+        @media (max-width: 768px) {
+            .pstory-inner { grid-template-columns: 1fr !important; height: auto !important; }
+            .pstory-img-wrap { height: 220px; }
+            .pstory-img-wrap img { height: 220px !important; object-position: center 20% !important; }
+            .pstory-content { padding: 1.25rem !important; }
+            .pstory-quote { font-size: 0.9rem !important; margin-bottom: 1rem !important; }
+            #psPrev { left: 0.4rem !important; width: 34px !important; height: 34px !important; top: 30% !important; }
+            #psNext { right: 0.4rem !important; width: 34px !important; height: 34px !important; top: 30% !important; }
         }
 
         @media (max-width: 640px) {
             .container { padding: 0 1.25rem; }
             .section { padding: 3.5rem 0; }
-            .role-grid, .item-grid, .tip-grid, .footer-grid { grid-template-columns: 1fr; }
+            .resources-grid, .footer-grid, .stats-grid { grid-template-columns: 1fr; }
+            .stat-item { border-right: none; border-top: 1px solid var(--border); }
+            .tab-buttons { overflow-x: auto; }
+            .top-bar-left { gap: 1rem; font-size: 0.73rem; }
             .footer-bottom { flex-direction: column; text-align: center; }
+            .pstory-img-wrap img { height: 180px !important; }
             .page-hero { padding: 3rem 0 2.5rem; }
         }
+
+        /* ============================================
+           ② PAGE-SPECIFIC STYLES — add below this line
+        ============================================ */
+
     </style>
 </head>
 <body>
@@ -488,8 +673,7 @@
         </div>
     </div>
 
-<<<<<<< HEAD
-   <<!-- Navigation -->
+    <!-- Navigation -->
 <nav class="navbar" id="navbar">
     <div class="container">
         <div class="nav-wrapper">
@@ -757,210 +941,186 @@
         </div>
     </div>
 </nav>
-=======
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="container">
-            <div class="nav-wrapper">
-                <a href="index.html" class="logo">
-                    <div class="logo-mark">
-                        <img src="gbs.png" alt="GBS-CIDP Foundation Logo"
-                             style="width:90px; height:90px; border-radius:50%; object-fit:cover; display:block;">
-                    </div>
-                    <div>
-                        <div class="logo-title">GBS-CIDP Foundation</div>
-                        <div class="logo-sub">NeuroAI Research Foundation Nepal</div>
-                    </div>
-                </a>
 
-                <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
-                    <span></span><span></span><span></span>
-                </button>
-
-                <ul class="nav-menu" id="navMenu">
-                    <li class="dropdown">
-                        <a href="index.html#conditions">Conditions <span class="arrow">▾</span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="index.html#conditions" data-tab="gbs">Guillain-Barré Syndrome (GBS)</a></li>
-                            <li><a href="index.html#conditions" data-tab="cidp">CIDP</a></li>
-                            <li><a href="index.html#conditions" data-tab="mmn">MMN</a></li>
-                            <li><a href="index.html#conditions">Medical Glossary</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="index.html#resources">Resources <span class="arrow">▾</span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="index.html#publications">Publications</a></li>
-                            <li><a href="index.html#educational-videos">Educational Videos</a></li>
-                            <li><a href="index.html#find-specialist">Find a Specialist</a></li>
-                            <li><a href="icu-toolkit.html">ICU Toolkit</a></li>
-                            <li><a href="index.html#benefits">Benefits &amp; Services</a></li>
-                            <li><a href="index.html#hcp">For Healthcare Professionals</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="index.html#research">Research</a></li>
-                    <li><a href="index.html#patient-stories">Patient Stories</a></li>
-                    <li class="dropdown">
-                        <a href="team.html">Team <span class="arrow">▾</span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="team.html#board">Board of Directors</a></li>
-                            <li><a href="team.html#management">Management Team</a></li>
-                            <li><a href="team.html#medical">Medical Board</a></li>
-                            <li><a href="team.html#advisors">Advisors</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="index.html#about">About <span class="arrow">▾</span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="index.html#about">Our Story</a></li>
-                            <li><a href="index.html#about">Our Mission</a></li>
-                            <li><a href="index.html#research">Research</a></li>
-                            <li><a href="index.html#patient-stories">Patient Stories</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="https://docs.google.com/forms/d/1n8eYdUvExKU20zgdUrQXqv4rXbWNGEQRfSBQEt6K35Q" class="btn-donate-nav">Donate</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
->>>>>>> 1a29ec4c8c3fb4c8ebd1f5c65ee06fa9b47eae8a
-    <!-- PAGE HERO -->
+    <!-- PAGE HERO — ③ update section-tag, h1, p, and breadcrumb for each page -->
     <div class="page-hero">
         <div class="container">
             <div class="page-hero-content">
                 <ul class="breadcrumb">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#resources">Resources</a></li>
-                    <li>ICU Toolkit</li>
+                    
                 </ul>
-                <span class="section-tag">Patient &amp; Family Resources</span>
-                <h1>ICU Toolkit</h1>
-                <p>What to expect during ICU admission for GBS patients — a guide for patients and families navigating intensive care.</p>
+                <!-- <span class="section-tag">[Category Label]</span> -->
+                <h1>Gallery</h1>
+                <!-- <p>[A short description of what this page covers.]</p> -->
             </div>
         </div>
     </div>
 
-    <!-- PAGE CONTENT -->
-    <section class="section">
-        <div class="container">
+    <!-- ════════════════════════════════════════════════════
+         ④ PAGE CONTENT — replace sections below with your own
+         ════════════════════════════════════════════════════ -->
+<!-- Gallery Section -->
+<section class="section" id="gallery">
+    <div class="container">
 
-            <div class="toolkit-block">
-                <h2>Why would someone with GBS be in the ICU?</h2>
-                <p>While not all Guillain-Barré Syndrome (GBS) patients require intensive care, GBS can sometimes affect the ability to breathe properly. ICU admission ensures closer monitoring and immediate medical support from a dedicated team, including:</p>
-                <div class="role-grid">
-                    <div class="role-item"><div class="role-dot"></div><div><strong>ICU Nurses</strong><p>1:1 or 1:2 patient care ratio</p></div></div>
-                    <div class="role-item"><div class="role-dot"></div><div><strong>Respiratory Therapists (RTs)</strong><p>Monitor breathing and ventilator support</p></div></div>
-                    <div class="role-item"><div class="role-dot"></div><div><strong>Intensivists</strong><p>Physicians specialized in ICU care</p></div></div>
-                    <div class="role-item"><div class="role-dot"></div><div><strong>Physiotherapists</strong><p>Assist with movement</p></div></div>
-                    <div class="role-item"><div class="role-dot"></div><div><strong>Dietitians</strong><p>Manage nutrition</p></div></div>
-                    <div class="role-item"><div class="role-dot"></div><div><strong>Social Workers</strong><p>Support patients and families</p></div></div>
-                </div>
-            </div>
+        <div class="section-header-center" style="margin-bottom:3rem;">
+            <span class="section-tag">Our Work</span>
+            <h2 class="section-title">Gallery</h2>
+            <p class="section-sub">
+                Explore moments from our research activities, patient support initiatives,
+                community outreach, awareness programs, and international collaborations.
+            </p>
+        </div>
 
-            <div class="toolkit-block">
-                <h2>What does an ICU room look like?</h2>
-                <p>An ICU room is equipped with specialized medical equipment designed for round-the-clock monitoring and care. You can expect to see:</p>
-                <ul class="equip-list">
-                    <li>A specialized hospital bed to help prevent bedsores</li>
-                    <li>A cardiac monitor tracking heart rate, rhythm, breathing, blood pressure, and oxygen levels</li>
-                    <li>IV pumps for hydration and medication</li>
-                    <li>A mechanical ventilator (if breathing support is needed)</li>
-                </ul>
-                <div class="info-box">
-                    <strong>A reassuring note</strong>
-                    Though the equipment may look intimidating, each piece is there to ensure safety and comfort during the recovery process.
-                </div>
-            </div>
+        <div id="gallerySlider">
 
-            <div class="toolkit-block">
-                <h2>What to expect in the ICU environment</h2>
-                <p>ICUs can be busy and noisy due to alarms from machines like cardiac monitors, IV pumps, and ventilators. These alarms help healthcare providers respond quickly when needed.</p>
-                <h4 style="font-size:0.85rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-light);margin:1.5rem 0 0.75rem;">What your ICU team will do</h4>
-                <ul class="equip-list">
-                    <li>Nurses will assist with repositioning, bathing, feeding, and medications</li>
-                    <li>Respiratory Therapists will assess and manage breathing support</li>
-                    <li>Doctors (Intensivists) will check in daily and as needed</li>
-                </ul>
-                <div class="info-box">
-                    <strong>It's natural to feel anxious</strong>
-                    The ICU team is there to provide constant support and care throughout the stay.
-                </div>
-            </div>
-
-            <div class="toolkit-block">
-                <h2>Helpful tips for ICU stays</h2>
-                <p>Bringing familiar personal items can make an ICU stay more comfortable. Ask ICU staff about what's allowed. Some helpful items include:</p>
-                <div class="tip-grid">
-                    <div class="tip-category">
-                        <h4>Comfort Items</h4>
-                        <ul>
-                            <li>Pillow</li>
-                            <li>Blanket</li>
-                        </ul>
+            <!-- Slide 1 -->
+            <div class="gslide active">
+                <div class="gslide-inner">
+                    <div class="gslide-img-wrap">
+                        <img src="datacollection.jpeg"
+                             alt="TUTH Neurology Data Collection">
                     </div>
-                    <div class="tip-category">
-                        <h4>Personal Care Essentials</h4>
-                        <ul>
-                            <li>Toothbrush &amp; toothpaste</li>
-                            <li>Hairbrush</li>
-                            <li>Shampoo &amp; soap</li>
-                            <li>Electric razor</li>
-                        </ul>
-                    </div>
-                    <div class="tip-category">
-                        <h4>Entertainment &amp; Familiar Items</h4>
-                        <ul>
-                            <li>Photos</li>
-                            <li>Small radio</li>
-                            <li>Clock</li>
-                            <li>Phone or tablet</li>
-                        </ul>
+
+                    <div class="gslide-content">
+                        <span class="gslide-tag">Research & Data Collection</span>
+                        <h3>TUTH Neurology Data Collection</h3>
+                        <p>
+                            Our President and Coordinator visited Tribhuvan University
+                            Teaching Hospital (TUTH) to support data collection from the
+                            Neurology Ward and strengthen our research collaboration in
+                            neurological healthcare.
+                        </p>
+                        <span class="gslide-date">
+                            July 2026 &middot; Kathmandu
+                        </span>
                     </div>
                 </div>
             </div>
+
+            <!-- Slide 2 -->
+            <div class="gslide">
+                <div class="gslide-inner">
+                    <div class="gslide-img-wrap">
+                        <img src="chetanvisit.jpeg"
+                             alt="Visit to GBS CIDP Foundation International">
+                    </div>
+
+                    <div class="gslide-content">
+                        <span class="gslide-tag">International Collaboration</span>
+                        <h3>Visit to GBS|CIDP Foundation International</h3>
+                        <p>
+                            Our Foreign Affairs Director and Coordinator visited the
+                            GBS|CIDP Foundation International to strengthen international
+                            connections, foster collaboration, and explore opportunities
+                            to better support the GBS|CIDP community.
+                        </p>
+                        <span class="gslide-date">
+                            2026 &middot; International Collaboration
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="gslide">
+                <div class="gslide-inner">
+                    <div class="gslide-img-wrap">
+                        <img src="path/to/awareness-program.jpg"
+                             alt="GBS CIDP Awareness Program">
+                    </div>
+
+                    <div class="gslide-content">
+                        <span class="gslide-tag">Community Outreach</span>
+                        <h3>GBS|CIDP Awareness Program</h3>
+                        <p>
+                            Our team conducted awareness activities to improve understanding
+                            of GBS and CIDP, promote early recognition of symptoms, and
+                            connect patients and families with reliable information and support.
+                        </p>
+                        <span class="gslide-date">
+                            2026 &middot; Nepal
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="gslide">
+                <div class="gslide-inner">
+                    <div class="gslide-img-wrap">
+                        <img src="path/to/patient-support.jpg"
+                             alt="Patient and Caregiver Support">
+                    </div>
+
+                    <div class="gslide-content">
+                        <span class="gslide-tag">Patient Support</span>
+                        <h3>Patient & Caregiver Support</h3>
+                        <p>
+                            Patients, survivors, and caregivers came together to share
+                            experiences, recovery journeys, challenges, and coping strategies,
+                            building a stronger community of mutual support.
+                        </p>
+                        <span class="gslide-date">
+                            2026 &middot; Nepal
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <button class="gslide-nav gslide-prev" aria-label="Previous">
+                &#8249;
+            </button>
+
+            <button class="gslide-nav gslide-next" aria-label="Next">
+                &#8250;
+            </button>
 
         </div>
-    </section>
 
-    <!-- CTA -->
-    <section class="cta-section">
-        <div class="container">
-            <h2>Join Us in Making a Difference</h2>
-            <p>Whether through volunteering, donations, or spreading awareness — every contribution helps build a stronger foundation for patients and families across Nepal.</p>
-            <div class="cta-buttons">
-                <a href="https://docs.google.com/forms/d/1n8eYdUvExKU20zgdUrQXqv4rXbWNGEQRfSBQEt6K35Q" class="btn btn-primary btn-lg" style="background:white;color:var(--blue-deep);">Make a Donation</a>
-                <a href="index.html#about" class="btn btn-ghost btn-lg">Get Involved</a>
+        <!-- Thumbnail Strip -->
+        <div class="gthumb-strip" id="gThumbStrip">
+
+            <div class="gthumb active" data-index="0">
+                <img src="datacollection.jpeg"
+                     alt="TUTH Data Collection">
             </div>
-        </div>
-    </section>
 
-<<<<<<< HEAD
-   
-=======
->>>>>>> 1a29ec4c8c3fb4c8ebd1f5c65ee06fa9b47eae8a
-    <!-- Footer -->
+            <div class="gthumb" data-index="1">
+                <img src="chetanvisit.jpeg"
+                     alt="International Collaboration">
+            </div>
+
+            <!-- <div class="gthumb" data-index="2">
+                <img src="path/to/awareness-program.jpg"
+                     alt="GBS CIDP Awareness Program">
+            </div>
+
+            <div class="gthumb" data-index="3">
+                <img src="path/to/patient-support.jpg"
+                     alt="Patient Support">
+            </div> -->
+
+        </div>
+
+    </div>
+</section>
+
+<!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
                     <div class="footer-logo-wrap">
                         <div class="logo-mark">
-<<<<<<< HEAD
                         <img src="gbs.png" alt="GBS-CIDP Foundation Logo"
                              style="width:90px; height:90px; border-radius:50%; object-fit:cover; display:block;">
                     </div>
                         <div class="footer-logo-name">GBS-CIDP and NeuroAI<br>Research Foundation Nepal</div>
                     </div>
                     <p>Improving the quality of life for individuals and families affected by GBS, CIDP, MMN, and variants through support, education, research, and advocacy and Changing the Dimenison of Medical Era through AI in Nepal </p>
-=======
-                            <img src="gbs.png" alt="GBS-CIDP Foundation Logo"
-                                 style="width:38px; height:38px; border-radius:50%; object-fit:cover; display:block;">
-                        </div>
-                        <div class="footer-logo-name">GBS-CIDP and NeuroAI<br>Research Foundation Nepal</div>
-                    </div>
-                    <p>Improving the quality of life for individuals and families affected by GBS, CIDP, MMN, and variants through support, education, research, and advocacy.</p>
->>>>>>> 1a29ec4c8c3fb4c8ebd1f5c65ee06fa9b47eae8a
                     <div class="social-links">
                         <a href="https://www.facebook.com/profile.php?id=61584876545928" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg></a>
                         <a href="#" aria-label="Twitter / X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
@@ -971,7 +1131,6 @@
                 <div class="footer-col">
                     <h4>Quick Links</h4>
                     <ul>
-<<<<<<< HEAD
                         <li><a href="#conditions">Conditions</a></li>
                         <li><a href="#resources">Resources</a></li>
                         <li><a href="#research">Research</a></li>
@@ -980,25 +1139,13 @@
                         <li><a href="#patient-stories">Patient Stories</a></li>
                         <li><a href="team.html">Our Team</a></li>
                         <li><a href="#about">About Us</a></li>
-=======
-                        <li><a href="index.html#conditions">Conditions</a></li>
-                        <li><a href="index.html#resources">Resources</a></li>
-                        <li><a href="index.html#research">Research</a></li>
-                        <li><a href="index.html#patient-stories">Patient Stories</a></li>
-                        <li><a href="team.html">Our Team</a></li>
-                        <li><a href="index.html#about">About Us</a></li>
->>>>>>> 1a29ec4c8c3fb4c8ebd1f5c65ee06fa9b47eae8a
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>Get Involved</h4>
                     <ul>
                         <li><a href="https://docs.google.com/forms/d/1n8eYdUvExKU20zgdUrQXqv4rXbWNGEQRfSBQEt6K35Q">Make a Donation</a></li>
-<<<<<<< HEAD
                         <li><a href="https://docs.google.com/forms/d/1n8eYdUvExKU20zgdUrQXqv4rXbWNGEQRfSBQEt6K35Q">Volunteer & Membership</a></li>
-=======
-                        <li><a href="https://docs.google.com/forms/d/1n8eYdUvExKU20zgdUrQXqv4rXbWNGEQRfSBQEt6K35Q">Volunteer &amp; Membership</a></li>
->>>>>>> 1a29ec4c8c3fb4c8ebd1f5c65ee06fa9b47eae8a
                         <li><a href="https://docs.google.com/forms/d/1n8eYdUvExKU20zgdUrQXqv4rXbWNGEQRfSBQEt6K35Q">Events</a></li>
                         <li><a href="https://docs.google.com/forms/d/1n8eYdUvExKU20zgdUrQXqv4rXbWNGEQRfSBQEt6K35Q">Host a Fundraiser</a></li>
                         <li><a href="https://docs.google.com/forms/d/1n8eYdUvExKU20zgdUrQXqv4rXbWNGEQRfSBQEt6K35Q">Awareness Campaigns</a></li>
@@ -1006,40 +1153,22 @@
                 </div>
                 <div class="footer-col">
                     <h4>Contact</h4>
-<<<<<<< HEAD
                     <div class="contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg><a href="mailto:gbscidpfoundationnepal@gmail.com">gbscidpfoundationnepal@gmail.com</a></div>
                     <div class="contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 12a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9a16 16 0 006.91 6.91l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><span>014560964</span></div>
                     <div class="contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Kumarigal, Kathmandu, Nepal</span></div>
-=======
-                    <div class="contact-item">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
-                        <a href="mailto:gbscidpfoundationnepal@gmail.com">gbscidpfoundationnepal@gmail.com</a>
-                    </div>
-                    <div class="contact-item">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 12a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9a16 16 0 006.91 6.91l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-                        <span>014560964</span>
-                    </div>
-                    <div class="contact-item">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                        <span>Kumarigal, Kathmandu, Nepal</span>
-                    </div>
->>>>>>> 1a29ec4c8c3fb4c8ebd1f5c65ee06fa9b47eae8a
                 </div>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2026 GBS-CIDP and NeuroAI Research Foundation Nepal. All rights reserved.</p>
-<<<<<<< HEAD
                 <p><a href="#privacy">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="#terms">Terms of Use</a> &nbsp;&middot;&nbsp; </p>
             </div>
         </div>
     </footer>
-=======
-                <p><a href="#privacy">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="#terms">Terms of Use</a></p>
-            </div>
-        </div>
-    </footer>
 
->>>>>>> 1a29ec4c8c3fb4c8ebd1f5c65ee06fa9b47eae8a
+
+    <!-- ============================================
+         BASE SCRIPTS — same as index.html
+    ============================================ -->
     <script>
         // Navbar scroll shadow
         const navbar = document.getElementById('navbar');
@@ -1057,7 +1186,28 @@
             l.addEventListener('click', () => document.getElementById('navMenu').classList.remove('open'));
         });
 
-        // Active nav link highlight
+        // Smooth scroll with sticky navbar offset (for any #anchor links on this page)
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            const offset = navbar.offsetHeight + 16;
+            const top = el.getBoundingClientRect().top + window.scrollY - offset;
+            window.scrollTo({ top, behavior: 'smooth' });
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const id = this.getAttribute('href').replace('#', '');
+                if (!id) return;
+                const target = document.getElementById(id);
+                if (target) {
+                    e.preventDefault();
+                    scrollToSection(id);
+                }
+            });
+        });
+
+        // Active nav link highlight based on current page
         (function () {
             const page = location.pathname.split('/').pop() || 'index.html';
             document.querySelectorAll('.nav-menu > li > a').forEach(a => {
@@ -1065,7 +1215,136 @@
                 if (href === page) a.classList.add('active');
             });
         })();
+
+        // Counter animation (used if stats bar is present on the page)
+        const counterObserver = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (!e.isIntersecting) return;
+                e.target.querySelectorAll('[data-target]').forEach(el => {
+                    const target = parseInt(el.dataset.target);
+                    if (isNaN(target)) return;
+                    let cur = 0;
+                    const step = Math.max(1, Math.ceil(target / 80));
+                    const timer = setInterval(() => {
+                        cur = Math.min(cur + step, target);
+                        el.textContent = cur.toLocaleString();
+                        if (cur >= target) clearInterval(timer);
+                    }, 20);
+                });
+                counterObserver.unobserve(e.target);
+            });
+        }, { threshold: 0.4 });
+        document.querySelectorAll('.stats-grid').forEach(g => counterObserver.observe(g));
+
+        // Condition tabs (used if conditions section is on the page)
+        document.querySelectorAll('.tab-button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+                btn.classList.add('active');
+                const pane = document.getElementById('tab-' + btn.dataset.tab);
+                if (pane) pane.classList.add('active');
+            });
+        });
+
+        // Patient stories slider (used if #storiesSlider is on the page)
+        (function () {
+            const slider = document.getElementById('storiesSlider');
+            if (!slider) return;
+            const slides   = slider.querySelectorAll('.pstory-slide');
+            const dotsWrap = document.getElementById('psDots');
+            const progress = document.getElementById('psProgress');
+            const counter  = document.getElementById('psCounter');
+            if (!slides.length) return;
+            const DURATION = 6000;
+            let cur = 0, paused = false, startTime = null, elapsed = 0, rafId = null;
+            const dots = [];
+
+            slides.forEach((_, i) => {
+                const d = document.createElement('button');
+                d.setAttribute('aria-label', `Story ${i + 1}`);
+                d.style.cssText = 'width:8px;height:8px;border-radius:50%;border:none;cursor:pointer;padding:0;transition:all 0.3s ease;background:var(--border);';
+                d.addEventListener('click', () => goTo(i));
+                if (dotsWrap) dotsWrap.appendChild(d);
+                dots.push(d);
+            });
+
+            function show(n) {
+                slides.forEach((s, i) => { s.style.display = i === n ? 'block' : 'none'; });
+                dots.forEach((d, i) => {
+                    d.style.background    = i === n ? 'var(--blue-deep)' : 'var(--border)';
+                    d.style.width         = i === n ? '28px' : '8px';
+                    d.style.borderRadius  = i === n ? '4px' : '50%';
+                });
+                if (counter) counter.textContent = `${n + 1} / ${slides.length}`;
+            }
+
+            function goTo(n) {
+                cur = (n + slides.length) % slides.length;
+                elapsed = 0; startTime = null;
+                if (progress) progress.style.width = '0%';
+                show(cur);
+                if (!paused) startRaf();
+            }
+
+            function startRaf() {
+                cancelAnimationFrame(rafId);
+                rafId = requestAnimationFrame(tick);
+            }
+
+            function tick(ts) {
+                if (paused) return;
+                if (!startTime) startTime = ts - elapsed;
+                elapsed = ts - startTime;
+                if (progress) progress.style.width = Math.min((elapsed / DURATION) * 100, 100) + '%';
+                if (elapsed >= DURATION) { goTo(cur + 1); return; }
+                rafId = requestAnimationFrame(tick);
+            }
+
+            const btnNext = document.getElementById('psNext');
+            const btnPrev = document.getElementById('psPrev');
+            if (btnNext) btnNext.addEventListener('click', () => goTo(cur + 1));
+            if (btnPrev) btnPrev.addEventListener('click', () => goTo(cur - 1));
+
+            slider.addEventListener('mouseenter', () => { paused = true; });
+            slider.addEventListener('mouseleave', () => { paused = false; startTime = null; startRaf(); });
+
+            show(0);
+            startRaf();
+        })();
+
+
+
+        (function () {
+    const slides = document.querySelectorAll('.gslide');
+    const thumbs = document.querySelectorAll('.gthumb');
+    const prevBtn = document.querySelector('.gslide-prev');
+    const nextBtn = document.querySelector('.gslide-next');
+    if (!slides.length) return;
+
+    let current = 0;
+
+    function goTo(index) {
+        current = (index + slides.length) % slides.length;
+        slides.forEach((s, i) => s.classList.toggle('active', i === current));
+        thumbs.forEach((t, i) => t.classList.toggle('active', i === current));
+        thumbs[current]?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }
+
+    prevBtn.addEventListener('click', () => goTo(current - 1));
+    nextBtn.addEventListener('click', () => goTo(current + 1));
+    thumbs.forEach(t => t.addEventListener('click', () => goTo(parseInt(t.dataset.index))));
+
+    // Auto-advance every 7s, pause on hover
+    let timer = setInterval(() => goTo(current + 1), 7000);
+    const slider = document.getElementById('gallerySlider');
+    slider.addEventListener('mouseenter', () => clearInterval(timer));
+    slider.addEventListener('mouseleave', () => timer = setInterval(() => goTo(current + 1), 7000));
+})();
     </script>
+
+    <!-- ⑤ PAGE-SPECIFIC SCRIPTS — add below this line -->
+   <script src="script.js"></script>
 
 </body>
 </html>

@@ -1,0 +1,334 @@
+/* ============================================
+   GALLERY SLIDER
+============================================ */
+#gallerySlider {
+    position: relative;
+    margin-top: 3.5rem;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(10,37,64,0.14);
+    background: var(--blue-deep);
+}
+.gslide { display: none; }
+.gslide.active { display: block; animation: fadeIn 0.5s ease; }
+.gslide-inner {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    min-height: 460px;
+}
+.gslide-img-wrap { position: relative; overflow: hidden; }
+.gslide-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.gslide-content {
+    padding: 3.5rem 3rem;
+    display: flex; flex-direction: column;
+    justify-content: center;
+}
+.gslide-tag {
+    display: inline-block;
+    font-size: 0.7rem; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--blue-bright);
+    margin-bottom: 1rem;
+}
+.gslide-content h3 {
+    font-family: var(--font-display);
+    font-size: 2rem; font-weight: 400;
+    color: var(--white);
+    margin-bottom: 1rem;
+}
+.gslide-content p {
+    color: rgba(255,255,255,0.65);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+.gslide-date {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.03em;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.gslide-nav {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    width: 46px; height: 46px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: var(--white);
+    font-size: 1.6rem;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    transition: var(--transition);
+    z-index: 10;
+}
+.gslide-nav:hover { background: rgba(255,255,255,0.28); }
+.gslide-prev { left: 1.5rem; }
+.gslide-next { right: 1.5rem; }
+
+.gthumb-strip {
+    display: flex;
+    gap: 0.85rem;
+    margin-top: 1.25rem;
+    overflow-x: auto;
+    padding-bottom: 0.25rem;
+}
+.gthumb {
+    flex: 0 0 auto;
+    width: 96px; height: 68px;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    opacity: 0.5;
+    border: 2px solid transparent;
+    transition: var(--transition);
+}
+.gthumb img { width: 100%; height: 100%; object-fit: cover; }
+.gthumb:hover { opacity: 0.8; }
+.gthumb.active { opacity: 1; border-color: var(--blue-bright); }
+
+@media (max-width: 992px) {
+    .gslide-inner { grid-template-columns: 1fr; min-height: auto; }
+    .gslide-img-wrap { height: 260px; }
+    .gslide-content { padding: 2rem 1.75rem; }
+    .gslide-content h3 { font-size: 1.6rem; }
+}
+@media (max-width: 640px) {
+    .gslide-nav { width: 36px; height: 36px; font-size: 1.3rem; }
+    .gslide-prev { left: 0.6rem; }
+    .gslide-next { right: 0.6rem; }
+    .gthumb { width: 76px; height: 54px; }
+}
+
+/* ============================================
+   TUTH IMAGE SLIDER
+============================================ */
+#tuthSlider {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(10,37,64,0.15);
+    height: 460px;
+}
+.tuth-slide { display: none; height: 100%; }
+.tuth-slide img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.tuth-slide-overlay {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    padding: 2rem 2.25rem 1.5rem;
+    background: linear-gradient(to top, rgba(10,37,64,0.85), transparent);
+}
+.tuth-slide-caption {
+    color: var(--white);
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 400;
+}
+
+#tuthPrev, #tuthNext {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: var(--white);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    transition: background 0.3s;
+    z-index: 10;
+}
+#tuthPrev { left: 1.25rem; }
+#tuthNext { right: 1.25rem; }
+#tuthPrev:hover, #tuthNext:hover { background: rgba(255,255,255,0.3); }
+
+#tuthCounter {
+    position: absolute; top: 1.25rem; right: 1.5rem;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.08em;
+    background: rgba(10,37,64,0.4);
+    padding: 0.3rem 0.75rem;
+    border-radius: 20px;
+    backdrop-filter: blur(4px);
+    z-index: 10;
+}
+
+#tuthDots {
+    position: absolute; bottom: 1.5rem; left: 2.25rem;
+    display: flex; gap: 0.4rem;
+    z-index: 10;
+}
+
+#tuthProgressBar {
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: rgba(255,255,255,0.15);
+    z-index: 10;
+}
+#tuthProgress {
+    height: 100%;
+    width: 0%;
+    background: var(--blue-bright);
+}
+
+.tuth-thumb-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+.tuth-thumb {
+    border-radius: 8px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    box-shadow: var(--shadow-sm);
+}
+.tuth-thumb img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+.tuth-thumb:hover img { transform: scale(1.08); }
+
+@media (max-width: 768px) {
+    #tuthSlider { height: 320px; }
+    .tuth-slide-overlay { padding: 1.5rem; }
+    .tuth-slide-caption { font-size: 0.95rem; }
+    #tuthPrev, #tuthNext { width: 36px; height: 36px; }
+    #tuthPrev { left: 0.75rem; }
+    #tuthNext { right: 0.75rem; }
+    .tuth-thumb-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+    #tuthSlider { height: 240px; }
+    #tuthDots { left: 1.25rem; }
+}
+
+/* ---- Neurology Faculty ---- */
+.faculty-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+.faculty-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 2rem 1.85rem;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.faculty-card:hover {
+    border-color: var(--blue-bright);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+}
+.faculty-num {
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    font-weight: 300;
+    color: var(--blue-bright);
+    opacity: 0.22;
+    line-height: 1;
+    position: absolute;
+    top: 1.5rem;
+    right: 1.75rem;
+}
+.faculty-name {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--blue-deep);
+    margin-bottom: 0.25rem;
+    padding-right: 2.5rem;
+}
+.faculty-role {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--blue-bright);
+    margin-bottom: 1.25rem;
+}
+.faculty-meta { display: flex; flex-direction: column; gap: 1rem; flex-grow: 1; }
+.faculty-meta h5 {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 0.35rem;
+}
+.faculty-meta p {
+    font-size: 0.87rem;
+    color: var(--text-mid);
+    line-height: 1.65;
+    margin: 0;
+}
+.faculty-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.faculty-tag {
+    font-size: 0.76rem;
+    color: var(--blue-mid);
+    background: var(--blue-pale);
+    padding: 0.25rem 0.7rem;
+    border-radius: 20px;
+    line-height: 1.5;
+}
+.faculty-contact {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.84rem;
+    word-break: break-all;
+}
+.faculty-contact svg { width: 14px; height: 14px; opacity: 0.45; flex-shrink: 0; color: var(--text-light); }
+
+@media (max-width: 992px) { .faculty-grid { grid-template-columns: 1fr; } }
+
+
+/* ---- Partner hospital: single ---- */
+
+.partner-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin-top: 3rem;
+}
+
+.partner-split .clinical-img-wrap {
+    aspect-ratio: auto;
+    width: 100%;
+}
+
+.partner-split .clinical-img-wrap img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+.partner-split .faculty-card {
+    margin-top: 2rem;
+}
+
+@media (max-width: 992px) {
+    .partner-split {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+}

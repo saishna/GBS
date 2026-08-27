@@ -6,12 +6,12 @@
 
     <!-- ① UPDATE title and description -->
     <meta name="description" content="GBS-CIDP and NeuroAI Research Foundation Nepal — [page description].">
-    <title>[Page Title] | GBS-CIDP &amp; NeuroAI Research Foundation Nepal</title>
+    <title> GBS-CIDP &amp; NeuroAI Research Foundation Nepal</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="style.css"> 
     <style>
         /* ============================================
            RESET & VARIABLES
@@ -674,131 +674,526 @@
     </div>
 
     <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="container">
-            <div class="nav-wrapper">
-                <a href="index.html" class="logo">
-                    <div class="logo-mark">
-                        <img src="E:\GBS\Images\gbss.png" alt="GBS-CIDP Foundation Logo"
-                             style="width:90px; height:90px; border-radius:50%; object-fit:cover; display:block;">
-                    </div>
-                    <div>
-                        <div class="logo-title">GBS-CIDP Foundation</div>
-                        <div class="logo-sub">NeuroAI Research Foundation Nepal</div>
-                    </div>
-                </a>
+   <!-- Navigation -->
+<nav class="navbar" id="navbar">
+    <div class="container">
+        <div class="nav-wrapper">
 
-                <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
-                    <span></span><span></span><span></span>
-                </button>
+            <a href="index.html#home" class="logo">
+                <div class="logo-mark">
+                    <img src="gbs.png"
+                         alt="GBS-CIDP Foundation Logo"
+                         style="width:90px; height:90px; border-radius:50%; object-fit:cover; display:block;">
+                </div>
 
-                <ul class="nav-menu" id="navMenu">
-                    <li class="dropdown">
-                        <a href="index.html#conditions">Conditions <span class="arrow">▾</span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="index.html#conditions" data-tab="gbs">Guillain-Barré Syndrome (GBS)</a></li>
-                            <li><a href="index.html#conditions" data-tab="cidp">CIDP</a></li>
-                            <li><a href="index.html#conditions" data-tab="mmn">MMN</a></li>
-                            <li><a href="index.html#conditions">Medical Glossary</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="index.html#resources">Resources <span class="arrow">▾</span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="index.html#publications">Publications</a></li>
-                            <li><a href="index.html#educational-videos">Educational Videos</a></li>
-                            <li><a href="index.html#find-specialist">Find a Specialist</a></li>
-                            <li><a href="index.html#icu-toolkit">ICU Toolkit</a></li>
-                            <li><a href="index.html#benefits">Benefits &amp; Services</a></li>
-                            <li><a href="index.html#hcp">For Healthcare Professionals</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="index.html#research">Research</a></li>
-                    <li><a href="index.html#patient-stories">Patient Stories</a></li>
-                    <li class="dropdown">
-                        <a href="team.html">Team <span class="arrow">▾</span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="team.html#board">Board of Directors</a></li>
-                            <li><a href="team.html#management">Management Team</a></li>
-                            <li><a href="team.html#medical">Medical Board</a></li>
-                            <li><a href="team.html#advisors">Advisors</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="index.html#about">About <span class="arrow">▾</span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="index.html#about">Our Story</a></li>
-                            <li><a href="index.html#about">Our Mission</a></li>
-                            <li><a href="index.html#research">Research</a></li>
-                            <li><a href="index.html#patient-stories">Patient Stories</a></li>
-<<<<<<< HEAD
-                             <li><a href="photo.html">Gallery</a></li>
-=======
->>>>>>> 1a29ec4c8c3fb4c8ebd1f5c65ee06fa9b47eae8a
-                        </ul>
-                    </li>
-                    <li><a href="index.html#donate" class="btn-donate-nav">Donate</a></li>
-                </ul>
-            </div>
+                <div>
+                    <div class="logo-title">GBS-CIDP Foundation</div>
+                    <div class="logo-sub">NeuroAI Research Foundation Nepal</div>
+                </div>
+            </a>
+
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav-menu" id="navMenu">
+
+                <!-- CONDITIONS -->
+                <li class="dropdown">
+                    <a href="index.html#conditions">
+                        Conditions <span class="arrow">▾</span>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="index.html#conditions" data-tab="gbs">
+                                Guillain-Barré Syndrome (GBS)
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="index.html#conditions" data-tab="cidp">
+                                CIDP
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="index.html#conditions" data-tab="mmn">
+                                MMN
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="index.html#conditions">
+                                Medical Glossary
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+                <!-- RESOURCES -->
+                <li class="dropdown">
+                    <a href="index.html#resources">
+                        Resources <span class="arrow">▾</span>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="index.html#publications">
+                                Publications
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="index.html#educational-videos">
+                                Educational Videos
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="index.html#find-specialist">
+                                Find a Specialist
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="index.html#icu-toolkit">
+                                ICU Toolkit
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="index.html#benefits">
+                                Benefits & Services
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="index.html#hcp">
+                                Gallery
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+                <!-- RESEARCH -->
+                <li class="dropdown">
+                    <a href="index.html#research">
+                        Research <span class="arrow">▾</span>
+                    </a>
+
+                    <ul class="dropdown-menu">
+
+                        <span class="menu-section-label">
+                            Research Areas
+                        </span>
+
+                        <li>
+                            <a href="index.html#research-areas">
+                                Clinical Research
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="index.html#research-areas">
+                                Water &amp; Environmental Research
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="index.html#research-areas">
+                                AI in Health
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="index.html#research-areas">
+                                Treatment Optimization
+                            </a>
+                        </li>
+
+                        <div class="menu-divider"></div>
+
+                        <span class="menu-section-label">
+                            Projects
+                        </span>
+
+                        <li>
+                            <a href="index.html#ongoing-projects">
+                                Ongoing Projects
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="index.html#completed-research">
+                                Completed Research
+                            </a>
+                        </li>
+
+                        <div class="menu-divider"></div>
+
+                        <li>
+                            <a href="index.html#research-collaborations">
+                                Collaborations
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+
+
+                <!-- PATIENT STORIES -->
+                <li>
+                    <a href="index.html#patient-stories">
+                        Patient Stories
+                    </a>
+                </li>
+
+
+                <!-- TEAM -->
+                <li class="dropdown">
+                    <a href="team.html">
+                        Team <span class="arrow">▾</span>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="team.html#board">
+                                Board of Directors
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="team.html#management">
+                                Management Team
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="team.html#medical">
+                                Medical Board
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="team.html#advisors">
+                                Advisors
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+                <!-- ABOUT -->
+                <li class="dropdown">
+                    <a href="index.html#about">
+                        About <span class="arrow">▾</span>
+                    </a>
+
+                    <ul class="dropdown-menu">
+
+                        <li>
+                            <a href="index.html#about">
+                                Our Story
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="index.html#about">
+                                Our Mission
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="index.html#research">
+                                Research
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="index.html#patient-stories">
+                                Patient Stories
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="photo.html">
+                                Gallery
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+
+
+                <!-- DONATE -->
+                <li>
+                    <a href="https://docs.google.com/forms/d/1n8eYdUvExKU20zgdUrQXv4rXbWNGEQRfSBQEt6K35Q"
+                       class="btn-donate-nav">
+                        Donate
+                    </a>
+                </li>
+
+            </ul>
         </div>
-    </nav>
-
+    </div>
+</nav>
     <!-- PAGE HERO — ③ update section-tag, h1, p, and breadcrumb for each page -->
     <div class="page-hero">
         <div class="container">
             <div class="page-hero-content">
                 <ul class="breadcrumb">
                     <li><a href="index.html">Home</a></li>
-                    <li>[Section]</li>
-                    <li>[Page Name]</li>
+                    
                 </ul>
-                <span class="section-tag">[Category Label]</span>
-                <h1>[Page Title]</h1>
-                <p>[A short description of what this page covers.]</p>
+                <span class="section-tag">Specialist</span>
+                <h1>Find Specialists</h1>
+            
             </div>
         </div>
     </div>
 
-    <!-- ════════════════════════════════════════════════════
-         ④ PAGE CONTENT — replace sections below with your own
-         ════════════════════════════════════════════════════ -->
+  <!-- Neurology Faculties — TUTH -->
+<section class="section section-alt" id="neurology-faculty">
+    <div class="container">
+        <div class="section-header-center">
+            <span class="section-tag">Department of Neurology, TUTH</span>
+            <h2 class="section-title">Neurology Faculties</h2>
+            <p class="section-sub">The consultant neurologists of Tribhuvan University Teaching Hospital whose clinical and academic expertise supports the diagnosis, treatment, and research of GBS, CIDP, MMN, and related neuromuscular disorders in Nepal.</p>
+        </div>
 
-    <section class="section">
-        <div class="container">
-            <div class="section-header-center" style="margin-bottom:3rem;">
-                <span class="section-tag">Getting Started</span>
-                <h2 class="section-title">Your Content Goes Here</h2>
-                <p class="section-sub">Replace this placeholder with your real page sections using the component classes above.</p>
+        <div class="faculty-grid">
+
+            <!-- 1 -->
+            <article class="faculty-card">
+                <span class="faculty-num">01</span>
+                <h3 class="faculty-name">Dr Bikram Prasad Gajurel</h3>
+                <div class="faculty-role">Associate Professor &middot; Head of Department</div>
+                <div class="faculty-meta">
+                    <div>
+                        <h5>Qualification</h5>
+                        <p>MBBS, MD Internal Medicine, DM Neurology, Fellow of Cerebrovascular Diseases (Canada)</p>
+                    </div>
+                    <div>
+                        <h5>Special Interests</h5>
+                        <div class="faculty-tags">
+                            <span class="faculty-tag">Stroke</span>
+                            <span class="faculty-tag">Epilepsy</span>
+                            <span class="faculty-tag">Multiple Sclerosis</span>
+                            <span class="faculty-tag">Neuroinfection</span>
+                            <span class="faculty-tag">Acute stroke care in Nepal</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h5>Member Societies</h5>
+                        <p>Nepalese Academy of Neurology (Vice President), Movement Disorders Society, American Neurological Association</p>
+                    </div>
+                </div>
+                <div class="faculty-contact">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+                    <a href="mailto:bikram_gajurel@iom.edu.np">bikram_gajurel@iom.edu.np</a>
+                </div>
+            </article>
+
+            <!-- 2 -->
+            <article class="faculty-card">
+                <span class="faculty-num">02</span>
+                <h3 class="faculty-name">Dr Ragesh Karn</h3>
+                <div class="faculty-role">Assistant Professor</div>
+                <div class="faculty-meta">
+                    <div>
+                        <h5>Qualification</h5>
+                        <p>MBBS, MD Internal Medicine, DM Neurology</p>
+                    </div>
+                    <div>
+                        <h5>Special Interests</h5>
+                        <div class="faculty-tags">
+                            <span class="faculty-tag">Epilepsy</span>
+                            <span class="faculty-tag">Movement Disorders</span>
+                            <span class="faculty-tag">Peripheral Neuropathy</span>
+                            <span class="faculty-tag">Neurological awareness programs</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h5>Member Societies</h5>
+                        <p>Nepalese Academy of Neurology, Movement Disorders Society</p>
+                    </div>
+                </div>
+                <div class="faculty-contact">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+                    <a href="mailto:rageshkarn16@gmail.com">rageshkarn16@gmail.com</a>
+                </div>
+            </article>
+
+            <!-- 3 -->
+            <article class="faculty-card">
+                <span class="faculty-num">03</span>
+                <h3 class="faculty-name">Dr Reema Rajbhandari</h3>
+                <div class="faculty-role">Assistant Professor</div>
+                <div class="faculty-meta">
+                    <div>
+                        <h5>Qualification</h5>
+                        <p>MBBS, MD Neurology</p>
+                    </div>
+                    <div>
+                        <h5>Special Interests</h5>
+                        <div class="faculty-tags">
+                            <span class="faculty-tag">Epilepsy</span>
+                            <span class="faculty-tag">Multiple Sclerosis</span>
+                            <span class="faculty-tag">Young Stroke</span>
+                            <span class="faculty-tag">Headache</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h5>Member Societies</h5>
+                        <p>Nepalese Academy of Neurology, Movement Disorders Society, American Neurological Association, Nepal Epilepsy Society</p>
+                    </div>
+                </div>
+                <div class="faculty-contact">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+                    <a href="mailto:reemarajbhandari@hotmail.com">reemarajbhandari@hotmail.com</a>
+                </div>
+            </article>
+
+            <!-- 4 -->
+            <article class="faculty-card">
+                <span class="faculty-num">04</span>
+                <h3 class="faculty-name">Dr Rajeev Ojha</h3>
+                <div class="faculty-role">Assistant Professor</div>
+                <div class="faculty-meta">
+                    <div>
+                        <h5>Qualification</h5>
+                        <p>MBBS, MD, DM Neurology, Fellow of European Board of Neurology</p>
+                    </div>
+                    <div>
+                        <h5>Special Interests</h5>
+                        <div class="faculty-tags">
+                            <span class="faculty-tag">Movement Disorders</span>
+                            <span class="faculty-tag">Headache</span>
+                            <span class="faculty-tag">Neuromuscular Disorders</span>
+                            <span class="faculty-tag">Telemedicine</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h5>Member Societies</h5>
+                        <p>Nepalese Academy of Neurology (Joint Treasurer), Movement Disorders Society, American Neurological Association, Nepal Epilepsy Society</p>
+                    </div>
+                </div>
+                <div class="faculty-contact">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+                    <a href="mailto:rajeevojha@iom.edu.np">rajeevojha@iom.edu.np</a>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+
+
+<!-- HAMS Hospital — Partner -->
+<section class="section section-alt" id="hams-hospital">
+    <div class="container">
+        <div class="section-header-center">
+            <span class="section-tag">Our Medical Partner</span>
+            <h2 class="section-title">HAMS Hospital</h2>
+            <p class="section-sub" style="margin:0 auto;">A partner institution in Kathmandu supporting the diagnosis, treatment, and long-term follow-up of patients living with GBS, CIDP, and related neuromuscular conditions.</p>
+        </div>
+
+        <div class="partner-split">
+            <div>
+                <div class="clinical-img-wrap">
+                    <img src="ghanashyam.jpg" alt="HAMS Hospital, Kathmandu">
+                </div>
+                <div class="visual-caption">HAMS Hospital, Dhumbarahi, Kathmandu</div>
             </div>
-            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;">
-                <div class="card">
-                    <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
-                    <h3>Card One</h3>
-                    <p>Replace with real content for this page.</p>
-                    <a href="#" class="card-link">Learn More &rarr;</a>
-                </div>
-                <div class="card">
-                    <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
-                    <h3>Card Two</h3>
-                    <p>Replace with real content for this page.</p>
-                    <a href="#" class="card-link">Learn More &rarr;</a>
-                </div>
-                <div class="card">
-                    <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-                    <h3>Card Three</h3>
-                    <p>Replace with real content for this page.</p>
-                    <a href="#" class="card-link">Learn More &rarr;</a>
-                </div>
+
+            <div>
+                
+                <article class="faculty-card">
+                    <h3 class="faculty-name">Dr. Ghanshyam Kharel</h3>
+                    <div class="faculty-role">Senior Consultant Neurologist</div>
+                    <div class="faculty-meta">
+                        <div>
+                            <h5>Qualification</h5>
+                            <p>MD, DM Neurology</p>
+                        </div>
+                        
+                    </div>
+                </article>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+  
 
-<<<<<<< HEAD
+<!-- Kathmandu Medical College — Partner -->
+<section class="section section-alt" id="kmc-hospital">
+    <div class="container">
+        <div class="section-header-center">
+            <span class="section-tag">Our Medical Partner</span>
+            <h2 class="section-title">Kathmandu Medical College</h2>
+            <p class="section-sub" style="margin:0 auto;">
+                A leading academic medical institution in Kathmandu supporting
+                neurological care, clinical education, research, and patient-centered
+                management of GBS, CIDP, and related neurological conditions.
+            </p>
+        </div>
 
-    
+        <div class="partner-split">
+            
+            
 
-=======
->>>>>>> 1a29ec4c8c3fb4c8ebd1f5c65ee06fa9b47eae8a
+            <!-- Doctor Information -->
+            <div>
+                <article class="faculty-card">
+
+                    <div class="doctor-profile-img">
+                        <img 
+                            src="https://kmc.edu.np/uploads/doctors/Vy5nzH8TKQhyy2AXAUCT1eNazyNwilZIxhxgN99N.png" 
+                            alt="Dr. Parash Rayamajhi"
+                        >
+                    </div>
+
+                    <h3 class="faculty-name">
+                        Dr. Parash Rayamajhi
+                    </h3>
+
+                    <div class="faculty-role">
+                        Head of Neuromedicine &amp; Associate Professor
+                    </div>
+
+                    <p style="margin-top: 1.2rem;">
+                        Dr. Parash Rayamajhi, Associate Professor and Head of 
+                        Neuromedicine at Kathmandu Medical College, is a distinguished 
+                        neurologist with expertise in stroke, seizures, autoimmune 
+                        disorders, and cognitive outcomes. An accomplished researcher 
+                        and educator, he advances neurology care, academic excellence, 
+                        and patient-centered practice.
+                    </p>
+
+                    <div class="faculty-meta">
+                        <div>
+                            <h5>Position</h5>
+                            <p>Associate Professor &amp; Head of Neuromedicine</p>
+                        </div>
+
+                        
+                    </div>
+
+                </article>
+            </div>
+
+        </div>
+    </div>
+</section>
+  
+  
+  
     <!-- CTA — remove if not needed on this page -->
     <section class="cta-section">
         <div class="container">
@@ -817,72 +1212,56 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <div class="footer-logo-wrap">
-                        <div class="footer-logo-mark">
-                            <svg width="18" height="18" viewBox="0 0 50 50" fill="none">
-                                <circle cx="25" cy="25" r="20" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
-                                <path d="M25 12 L25 38 M14 25 L36 25" stroke="rgba(255,255,255,0.5)" stroke-width="2.5" stroke-linecap="round"/>
-                                <circle cx="25" cy="25" r="3.5" fill="rgba(255,255,255,0.5)"/>
-                            </svg>
-                        </div>
+                        <div class="logo-mark">
+                        <img src="gbs.png" alt="GBS-CIDP Foundation Logo"
+                             style="width:90px; height:90px; border-radius:50%; object-fit:cover; display:block;">
+                    </div>
                         <div class="footer-logo-name">GBS-CIDP and NeuroAI<br>Research Foundation Nepal</div>
                     </div>
-                    <p>Improving the quality of life for individuals and families affected by GBS, CIDP, MMN, and variants through support, education, research, and advocacy.</p>
+                    <p>Improving the quality of life for individuals and families affected by GBS, CIDP, MMN, and variants through support, education, research, and advocacy and Changing the Dimenison of Medical Era through AI in Nepal </p>
                     <div class="social-links">
-                        <a href="#" aria-label="Facebook">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
-                        </a>
-                        <a href="#" aria-label="Twitter / X">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                        </a>
-                        <a href="#" aria-label="LinkedIn">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/></svg>
-                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=61584876545928" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg></a>
+                        <a href="#" aria-label="Twitter / X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                        <a href="https://www.linkedin.com/company/gbs-cidp-research-foundation-nepal" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/></svg></a>
+                        <a href="https://www.instagram.com/gbscidp_nepal/" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.75 2C4.574 2 2 4.574 2 7.75v8.5C2 19.426 4.574 22 7.75 22h8.5C19.426 22 22 19.426 22 16.25v-8.5C22 4.574 19.426 2 16.25 2h-8.5zm0 2h8.5A3.75 3.75 0 0 1 20 7.75v8.5A3.75 3.75 0 0 1 16.25 20h-8.5A3.75 3.75 0 0 1 4 16.25v-8.5A3.75 3.75 0 0 1 7.75 4zm8.75 1.5a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg></a>
                     </div>
                 </div>
                 <div class="footer-col">
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="index.html#conditions">Conditions</a></li>
-                        <li><a href="index.html#resources">Resources</a></li>
-                        <li><a href="index.html#research">Research</a></li>
-                        <li><a href="index.html#patient-stories">Patient Stories</a></li>
+                        <li><a href="#conditions">Conditions</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                        <li><a href="#research">Research</a></li>
+                        <li><a href="#ongoing-projects">Projects</a></li>
+                        <li><a href="#completed-research">Publications</a></li>
+                        <li><a href="#patient-stories">Patient Stories</a></li>
                         <li><a href="team.html">Our Team</a></li>
-                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="#about">About Us</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>Get Involved</h4>
                     <ul>
-                        <li><a href="index.html#donate">Make a Donation</a></li>
-                        <li><a href="#volunteer">Volunteer</a></li>
-                        <li><a href="#events">Events</a></li>
-                        <li><a href="#fundraise">Host a Fundraiser</a></li>
-                        <li><a href="#awareness">Awareness Campaigns</a></li>
+                        <li><a href="https://docs.google.com/forms/d/1n8eYdUvExKU20zgdUrQXqv4rXbWNGEQRfSBQEt6K35Q">Make a Donation</a></li>
+                        <li><a href="https://docs.google.com/forms/d/1n8eYdUvExKU20zgdUrQXqv4rXbWNGEQRfSBQEt6K35Q">Volunteer & Membership</a></li>
+                        <li><a href="https://docs.google.com/forms/d/1n8eYdUvExKU20zgdUrQXqv4rXbWNGEQRfSBQEt6K35Q">Events</a></li>
+                        <li><a href="https://docs.google.com/forms/d/1n8eYdUvExKU20zgdUrQXqv4rXbWNGEQRfSBQEt6K35Q">Host a Fundraiser</a></li>
+                        <li><a href="https://docs.google.com/forms/d/1n8eYdUvExKU20zgdUrQXqv4rXbWNGEQRfSBQEt6K35Q">Awareness Campaigns</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>Contact</h4>
-                    <div class="contact-item">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
-                        <a href="mailto:gbscidpfoundationnepal@gmail.com">gbscidpfoundationnepal@gmail.com</a>
-                    </div>
-                    <div class="contact-item">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 12a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9a16 16 0 006.91 6.91l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-                        <span>014560964</span>
-                    </div>
-                    <div class="contact-item">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                        <span>Kumarigal, Kathmandu, Nepal</span>
-                    </div>
+                    <div class="contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg><a href="mailto:gbscidpfoundationnepal@gmail.com">gbscidpfoundationnepal@gmail.com</a></div>
+                    <div class="contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 12a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9a16 16 0 006.91 6.91l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><span>014560964</span></div>
+                    <div class="contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Kumarigal, Kathmandu, Nepal</span></div>
                 </div>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2026 GBS-CIDP and NeuroAI Research Foundation Nepal. All rights reserved.</p>
-                <p><a href="#privacy">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="#terms">Terms of Use</a> &nbsp;&middot;&nbsp; Charitable Registration: Pending</p>
+                <p><a href="#privacy">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="#terms">Terms of Use</a> &nbsp;&middot;&nbsp; </p>
             </div>
         </div>
     </footer>
-
     <!-- ============================================
          BASE SCRIPTS — same as index.html
     ============================================ -->
@@ -1032,9 +1411,7 @@
     </script>
 
     <!-- ⑤ PAGE-SPECIFIC SCRIPTS — add below this line -->
-    <script>
-        // Add page-specific JavaScript here
-    </script>
+   <script src="script.js"></script>
 
 </body>
 </html>

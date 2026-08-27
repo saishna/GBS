@@ -1,3 +1,71 @@
+<<<<<<< HEAD
+<script>
+(function () {
+    const slider = document.getElementById('tuthSlider');
+    if (!slider) return;
+
+    const slides   = slider.querySelectorAll('.tuth-slide');
+    const dotsWrap = document.getElementById('tuthDots');
+    const progress = document.getElementById('tuthProgress');
+    const counter  = document.getElementById('tuthCounter');
+    if (!slides.length) return;
+
+    const DURATION = 5000;
+    let cur = 0, paused = false, startTime = null, elapsed = 0, rafId = null;
+    const dots = [];
+
+    slides.forEach((_, i) => {
+        const d = document.createElement('button');
+        d.setAttribute('aria-label', `Image ${i + 1}`);
+        d.style.cssText = 'width:8px;height:8px;border-radius:50%;border:none;cursor:pointer;padding:0;transition:all 0.3s ease;background:rgba(255,255,255,0.4);';
+        d.addEventListener('click', () => goTo(i));
+        dotsWrap.appendChild(d);
+        dots.push(d);
+    });
+
+    function show(n) {
+        slides.forEach((s, i) => { s.style.display = i === n ? 'block' : 'none'; });
+        dots.forEach((d, i) => {
+            d.style.background   = i === n ? '#FFFFFF' : 'rgba(255,255,255,0.4)';
+            d.style.width        = i === n ? '22px' : '8px';
+            d.style.borderRadius = i === n ? '4px' : '50%';
+        });
+        if (counter) counter.textContent = `${n + 1} / ${slides.length}`;
+    }
+
+    function goTo(n) {
+        cur = (n + slides.length) % slides.length;
+        elapsed = 0; startTime = null;
+        if (progress) progress.style.width = '0%';
+        show(cur);
+        if (!paused) startRaf();
+    }
+
+    function startRaf() {
+        cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(tick);
+    }
+
+    function tick(ts) {
+        if (paused) return;
+        if (!startTime) startTime = ts - elapsed;
+        elapsed = ts - startTime;
+        if (progress) progress.style.width = Math.min((elapsed / DURATION) * 100, 100) + '%';
+        if (elapsed >= DURATION) { goTo(cur + 1); return; }
+        rafId = requestAnimationFrame(tick);
+    }
+
+    document.getElementById('tuthNext').addEventListener('click', () => goTo(cur + 1));
+    document.getElementById('tuthPrev').addEventListener('click', () => goTo(cur - 1));
+
+    slider.addEventListener('mouseenter', () => { paused = true; });
+    slider.addEventListener('mouseleave', () => { paused = false; startTime = null; startRaf(); });
+
+    show(0);
+    startRaf();
+})();
+</script>
+=======
 /* ============================================
    GBS-CIDP Foundation JavaScript
    Interactive functionality for the website
@@ -464,3 +532,4 @@ if (typeof module !== 'undefined' && module.exports) {
         throttle: window.throttle
     };
 }
+>>>>>>> 1a29ec4c8c3fb4c8ebd1f5c65ee06fa9b47eae8a
