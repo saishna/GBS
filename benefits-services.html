@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Benefits & Services — Hospital collaborations, patient engagement, and the Neuro AI Research Fellowship. GBS-CIDP and NeuroAI Research Foundation Nepal.">
+    <title>Benefits &amp; Services | GBS-CIDP &amp; NeuroAI Research Foundation Nepal</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================================
+           RESET & VARIABLES
+        ============================================ */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --blue-deep:    #0A2540;
+            --blue-mid:     #1A5276;
+            --blue-bright:  #2471A3;
+            --blue-pale:    #D6EAF8;
+            --teal:         #148F77;
+            --warm-white:   #F7F8FA;
+            --off-white:    #EEF1F5;
+            --text-dark:    #0A2540;
+            --text-mid:     #2C3E50;
+            --text-light:   #5D6D7E;
+            --white:        #FFFFFF;
+            --border:       rgba(10,37,64,0.1);
+
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body:    'DM Sans', system-ui, sans-serif;
+
+            --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
+            --shadow-sm:  0 1px 3px rgba(10,37,64,0.08);
+            --shadow-md:  0 4px 16px rgba(10,37,64,0.1);
+            --shadow-lg:  0 12px 40px rgba(10,37,64,0.15);
+        }
+
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-dark);
+            background: var(--white);
+            line-height: 1.65;
+            overflow-x: hidden;
+        }
+
+        h1,h2,h3,h4,h5 {
+            font-family: var(--font-display);
+            line-height: 1.15;
+            color: var(--blue-deep);
+        }
+
+        a { color: var(--blue-bright); text-decoration: none; transition: var(--transition); }
+        a:hover { color: var(--blue-deep); }
+        img { max-width: 100%; height: auto; display: block; }
+        p { line-height: 1.75; }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* ============================================
+           TOP BAR
+        ============================================ */
+        .top-bar {
+            background: var(--blue-deep);
+            color: rgba(255,255,255,0.75);
+            font-size: 0.8rem;
+            letter-spacing: 0.03em;
+            padding: 0.55rem 0;
+        }
+        .top-bar .container { display: flex; justify-content: space-between; align-items: center; }
+        .top-bar-left { display: flex; gap: 2rem; }
+        .top-bar-left span { display: flex; align-items: center; gap: 0.4rem; }
+        .top-bar svg { opacity: 0.6; }
+        .top-bar a { color: rgba(255,255,255,0.75); }
+        .top-bar a:hover { color: var(--white); }
+        .lang-btn {
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.85);
+            padding: 0.2rem 0.75rem;
+            border-radius: 3px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            cursor: pointer;
+            font-family: var(--font-body);
+            transition: var(--transition);
+        }
+        .lang-btn:hover { background: rgba(255,255,255,0.2); color: #fff; }
+
+        /* ============================================
+           NAVIGATION
+        ============================================ */
+        .navbar {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: box-shadow var(--transition);
+        }
+        .navbar.scrolled { box-shadow: var(--shadow-md); }
+        .nav-wrapper { display: flex; align-items: center; justify-content: space-between; padding: 0.85rem 0; }
+        .logo { display: flex; align-items: center; gap: 0.85rem; color: var(--blue-deep); }
+        .logo-mark { width: 90px; height: 90px; border-radius: 50%; overflow: hidden; flex-shrink: 0; }
+        .logo-mark svg { width: 24px; height: 24px; }
+        .logo-title { font-family: var(--font-display); font-size: 1.3rem; font-weight: 600; letter-spacing: -0.01em; line-height: 1.1; color: var(--blue-deep); }
+        .logo-sub { font-size: 0.7rem; color: var(--text-light); letter-spacing: 0.04em; font-weight: 400; }
+
+        .nav-menu { display: flex; list-style: none; gap: 0.25rem; align-items: center; }
+        .nav-menu > li > a {
+            color: var(--text-mid);
+            font-size: 0.875rem;
+            font-weight: 500;
+            padding: 0.5rem 0.75rem;
+            border-radius: 4px;
+            transition: var(--transition);
+            display: flex; align-items: center; gap: 0.25rem;
+        }
+        .nav-menu > li > a:hover,
+        .nav-menu > li > a.active { color: var(--blue-deep); background: var(--warm-white); }
+        .nav-menu .arrow { font-size: 0.6rem; opacity: 0.5; transition: transform var(--transition); }
+        .dropdown { position: relative; }
+        .dropdown:hover .arrow { transform: rotate(180deg); }
+        .dropdown-menu {
+            position: absolute; top: calc(100% + 0.5rem); left: 0;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            box-shadow: var(--shadow-lg);
+            padding: 0.5rem;
+            min-width: 210px;
+            list-style: none;
+            opacity: 0; visibility: hidden;
+            transform: translateY(-6px);
+            transition: var(--transition);
+        }
+        .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown-menu a { display: block; padding: 0.55rem 0.85rem; font-size: 0.85rem; color: var(--text-mid); border-radius: 5px; transition: var(--transition); }
+        .dropdown-menu a:hover { background: var(--warm-white); color: var(--blue-deep); }
+
+        .btn-donate-nav {
+            background: var(--blue-deep);
+            color: var(--white) !important;
+            padding: 0.55rem 1.35rem !important;
+            border-radius: 5px;
+            font-weight: 600 !important;
+            letter-spacing: 0.02em;
+            margin-left: 0.5rem;
+        }
+        .btn-donate-nav:hover { background: var(--blue-mid) !important; transform: none; }
+
+        .mobile-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 0.4rem; }
+        .mobile-toggle span { width: 22px; height: 2px; background: var(--blue-deep); border-radius: 2px; transition: var(--transition); }
+
+        /* ============================================
+           PAGE HERO BANNER
+        ============================================ */
+        .page-hero { background: var(--blue-deep); padding: 4.5rem 0 4rem; position: relative; overflow: hidden; }
+        .page-hero::after {
+            content: '';
+            position: absolute; inset: 0;
+            background: linear-gradient(135deg, transparent 50%, rgba(36,113,163,0.15) 100%);
+            pointer-events: none;
+        }
+        .page-hero-content { position: relative; z-index: 1; }
+        .page-hero .section-tag { color: rgba(255,255,255,0.45); }
+        .page-hero h1 { color: var(--white); font-size: clamp(2rem,4.5vw,3.5rem); font-weight: 400; }
+        .page-hero p  { color: rgba(255,255,255,0.65); max-width: 620px; margin-top: 0.85rem; font-size: 1rem; line-height: 1.75; }
+        .breadcrumb { display: flex; gap: 0.5rem; align-items: center; font-size: 0.78rem; color: rgba(255,255,255,0.4); margin-bottom: 1.5rem; list-style: none; }
+        .breadcrumb a { color: rgba(255,255,255,0.5); }
+        .breadcrumb a:hover { color: rgba(255,255,255,0.85); }
+        .breadcrumb li + li::before { content: '/'; margin-right: 0.5rem; opacity: 0.4; }
+
+        /* ============================================
+           BUTTONS
+        ============================================ */
+        .btn {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            padding: 0.8rem 1.85rem; border-radius: 5px;
+            font-weight: 500; font-size: 0.9rem; letter-spacing: 0.01em;
+            transition: var(--transition); border: none; cursor: pointer;
+            font-family: var(--font-body); white-space: nowrap;
+        }
+        .btn-primary { background: var(--blue-deep); color: var(--white); }
+        .btn-primary:hover { background: var(--blue-mid); color: var(--white); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(10,37,64,0.25); }
+        .btn-ghost { background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,0.4); }
+        .btn-ghost:hover { background: rgba(255,255,255,0.1); color: var(--white); border-color: rgba(255,255,255,0.7); }
+        .btn-outline-dark { background: transparent; color: var(--blue-deep); border: 1.5px solid var(--blue-deep); }
+        .btn-outline-dark:hover { background: var(--blue-deep); color: var(--white); }
+        .btn-lg { padding: 1rem 2.2rem; font-size: 0.95rem; }
+
+        /* ============================================
+           SECTION DEFAULTS
+        ============================================ */
+        .section { padding: 5.5rem 0; }
+        .section-alt { background: var(--warm-white); }
+
+        .section-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--blue-bright);
+            margin-bottom: 1rem;
+        }
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            font-weight: 400;
+            color: var(--blue-deep);
+            margin-bottom: 1rem;
+        }
+        .section-sub { font-size: 1rem; color: var(--text-light); max-width: 640px; line-height: 1.75; }
+        .section-header-center { text-align: center; }
+        .section-header-center .section-sub { margin: 0 auto; }
+
+        /* ============================================
+           STATUS BADGES
+        ============================================ */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.3rem 0.85rem;
+            border-radius: 20px;
+        }
+        .status-active { background: #E8F8F0; color: #0D6B45; border: 1px solid #A8DFCA; }
+        .status-progress { background: #FEF9E7; color: #B7770D; border: 1px solid #F5D98B; }
+        .status-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+        /* ============================================
+           BENEFITS PAGE BLOCKS
+        ============================================ */
+        .benefits-block { margin-bottom: 4.5rem; }
+        .benefits-block:last-child { margin-bottom: 0; }
+        .block-heading { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+        .block-heading h2 { font-size: 1.85rem; font-weight: 400; margin: 0; }
+        .benefits-block > p.block-intro {
+            color: var(--text-mid);
+            font-size: 0.975rem;
+            line-height: 1.85;
+            max-width: 780px;
+            margin-bottom: 1.75rem;
+        }
+
+        /* Hospital cards */
+        .hospital-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            margin-bottom: 1.75rem;
+        }
+        .hospital-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.75rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        .hospital-card::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, var(--blue-deep), var(--blue-bright));
+        }
+        .hospital-card:hover { border-color: rgba(36,113,163,0.3); box-shadow: var(--shadow-md); }
+        .hospital-num {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 300;
+            color: var(--blue-bright);
+            opacity: 0.5;
+            margin-bottom: 0.5rem;
+        }
+        .hospital-card h4 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 500; color: var(--blue-deep); line-height: 1.3; margin-bottom: 0.5rem; }
+        .hospital-toggle {
+            display: inline-flex; align-items: center; gap: 0.35rem;
+            font-size: 0.8rem; font-weight: 600;
+            color: var(--blue-bright); background: none; border: none;
+            cursor: pointer; font-family: var(--font-body);
+            padding: 0; margin-top: 0.75rem; letter-spacing: 0.02em;
+            transition: color var(--transition);
+        }
+        .hospital-toggle:hover { color: var(--blue-deep); }
+        .hospital-toggle .chevron { font-size: 0.6rem; transition: transform 0.3s ease; display: inline-block; }
+        .hospital-toggle[aria-expanded="true"] .chevron { transform: rotate(180deg); }
+        .hospital-detail {
+            font-size: 0.85rem; color: var(--text-mid); line-height: 1.7;
+            overflow: hidden;
+            max-height: 0; opacity: 0;
+            transition: max-height 0.45s ease, opacity 0.35s ease, padding 0.35s ease, margin 0.35s ease;
+            border-top: 1px solid transparent;
+            padding-top: 0; margin-top: 0;
+        }
+        .hospital-detail.open {
+            max-height: 900px; opacity: 1;
+            padding-top: 1rem; margin-top: 0.75rem;
+            border-top-color: var(--border);
+        }
+        .hospital-detail p { font-size: 0.85rem; color: var(--text-mid); margin-bottom: 0.85rem; }
+        .hospital-detail p:last-child { margin-bottom: 0; }
+        .hospital-detail h5 {
+            font-family: var(--font-body);
+            font-size: 0.72rem; font-weight: 600;
+            letter-spacing: 0.08em; text-transform: uppercase;
+            color: var(--text-light);
+            margin: 1rem 0 0.6rem;
+        }
+        .hospital-detail h5:first-child { margin-top: 0; }
+        .hospital-detail-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+        .hospital-detail-list li {
+            display: flex; align-items: flex-start; gap: 0.6rem;
+            font-size: 0.83rem; color: var(--text-mid); line-height: 1.6;
+        }
+        .hospital-detail-list li::before {
+            content: '';
+            width: 4px; height: 4px; background: var(--blue-bright);
+            border-radius: 50%; flex-shrink: 0; margin-top: 0.55rem;
+        }
+        .hospital-detail-list strong { color: var(--blue-deep); font-weight: 600; }
+
+        .in-progress-card {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            background: #FFFBF0;
+            border: 1px solid #F5D98B;
+            border-radius: 10px;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+        .in-progress-icon {
+            width: 38px; height: 38px;
+            background: #FEF3D6;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        .in-progress-icon svg { width: 18px; height: 18px; color: #B7770D; }
+        .in-progress-card strong { display: block; font-size: 0.95rem; color: var(--text-dark); margin-bottom: 0.25rem; }
+        .in-progress-card p { margin: 0; font-size: 0.87rem; color: var(--text-mid); }
+
+        .flow-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .flow-item:last-child { border-bottom: none; }
+        .flow-dot {
+            width: 8px; height: 8px;
+            background: var(--blue-bright);
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 0.5rem;
+        }
+        .flow-item p { margin: 0; font-size: 0.92rem; color: var(--text-mid); line-height: 1.7; }
+
+        /* Outreach cards */
+        .outreach-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+            margin-top: 0.5rem;
+        }
+        .outreach-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.85rem;
+            display: flex;
+            flex-direction: column;
+        }
+        .outreach-icon {
+            width: 44px; height: 44px;
+            background: var(--blue-pale);
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 1.1rem;
+        }
+        .outreach-icon svg { width: 20px; height: 20px; color: var(--blue-mid); }
+        .outreach-card h4 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 500; margin-bottom: 0.6rem; }
+        .outreach-card p { font-size: 0.875rem; color: var(--text-light); line-height: 1.7; margin: 0; }
+
+        .process-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin-top: 1.75rem;
+            background: var(--warm-white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .process-step {
+            display: flex;
+            gap: 1.25rem;
+            align-items: flex-start;
+            padding: 1.5rem 1.75rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .process-step:last-child { border-bottom: none; }
+        .process-num {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 300;
+            color: var(--blue-bright);
+            opacity: 0.55;
+            flex-shrink: 0;
+            min-width: 2rem;
+        }
+        .process-step strong { display: block; font-size: 0.95rem; color: var(--blue-deep); margin-bottom: 0.3rem; }
+        .process-step p { margin: 0; font-size: 0.87rem; color: var(--text-light); line-height: 1.65; }
+
+        /* Fellowship section */
+        .thanks-banner {
+            background: var(--blue-deep);
+            border-radius: 12px;
+            padding: 2rem 2.25rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .thanks-icon {
+            width: 48px; height: 48px;
+            background: rgba(255,255,255,0.12);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        .thanks-icon svg { width: 22px; height: 22px; color: white; }
+        .thanks-banner p { margin: 0; color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.65; }
+        .thanks-banner strong { color: white; }
+
+        .fellowship-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2.25rem;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1.75rem;
+            align-items: flex-start;
+        }
+        .fellowship-icon {
+            width: 56px; height: 56px;
+            background: var(--blue-pale);
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        .fellowship-icon svg { width: 26px; height: 26px; color: var(--blue-mid); }
+        .fellowship-card h4 { font-family: var(--font-display); font-size: 1.35rem; font-weight: 500; margin-bottom: 0.65rem; }
+        .fellowship-card p { font-size: 0.95rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 0.5rem; }
+        .fellowship-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem; }
+        .fellowship-tag {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--blue-mid);
+            background: var(--blue-pale);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+        }
+
+        /* ============================================
+           CTA SECTION
+        ============================================ */
+        .cta-section { background: var(--blue-deep); padding: 6rem 0; text-align: center; }
+        .cta-section h2 { font-family: var(--font-display); font-size: clamp(2rem,4vw,3.2rem); font-weight: 400; color: var(--white); margin-bottom: 1rem; }
+        .cta-section p { font-size: 1rem; color: rgba(255,255,255,0.65); max-width: 540px; margin: 0 auto 2.5rem; line-height: 1.75; }
+        .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+        /* ============================================
+           FOOTER
+        ============================================ */
+        .footer { background: #060F1A; color: rgba(255,255,255,0.65); padding: 5rem 0 2.5rem; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 3.5rem; margin-bottom: 3.5rem; }
+        .footer-brand { margin-bottom: 1.25rem; }
+        .footer-logo-wrap { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem; }
+        .footer-logo-mark { width: 38px; height: 38px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .footer-logo-mark svg { width: 20px; height: 20px; }
+        .footer-logo-name { font-family: var(--font-display); font-size: 1.1rem; color: rgba(255,255,255,0.9); line-height: 1.2; }
+        .footer-brand p { font-size: 0.83rem; line-height: 1.8; }
+        .social-links { display: flex; gap: 0.6rem; margin-top: 1.5rem; }
+        .social-links a { width: 36px; height: 36px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: var(--transition); color: rgba(255,255,255,0.5); }
+        .social-links a:hover { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9); }
+        .social-links svg { width: 15px; height: 15px; fill: currentColor; }
+        .footer-col h4 { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 1.25rem; }
+        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+        .footer-col ul a { font-size: 0.85rem; color: rgba(255,255,255,0.55); transition: var(--transition); }
+        .footer-col ul a:hover { color: rgba(255,255,255,0.9); }
+        .contact-item { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.85rem; margin-bottom: 0.75rem; }
+        .contact-item svg { width: 14px; height: 14px; opacity: 0.4; flex-shrink: 0; margin-top: 0.15rem; }
+        .contact-item a { color: rgba(255,255,255,0.55); }
+        .contact-item a:hover { color: rgba(255,255,255,0.9); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; }
+        .footer-bottom p { font-size: 0.78rem; color: rgba(255,255,255,0.3); }
+        .footer-bottom a { color: rgba(255,255,255,0.3); }
+        .footer-bottom a:hover { color: rgba(255,255,255,0.7); }
+
+        /* ============================================
+           RESPONSIVE
+        ============================================ */
+        @media (max-width: 992px) {
+            .nav-menu { display: none; }
+            .nav-menu.open {
+                display: flex; flex-direction: column;
+                position: absolute; top: 100%; left: 0; right: 0;
+                background: var(--white);
+                border-top: 1px solid var(--border);
+                padding: 1rem;
+                box-shadow: var(--shadow-lg);
+                gap: 0.25rem;
+                z-index: 999;
+            }
+            .nav-menu.open .dropdown-menu { position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; border: none; padding: 0 0 0 1rem; background: transparent; }
+            .mobile-toggle { display: flex; }
+            .navbar { position: relative; }
+            .nav-wrapper { position: relative; }
+            .hospital-grid { grid-template-columns: 1fr; }
+            .outreach-grid { grid-template-columns: 1fr; }
+            .fellowship-card { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+        }
+
+        @media (max-width: 640px) {
+            .container { padding: 0 1.25rem; }
+            .section { padding: 3.5rem 0; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .page-hero { padding: 3rem 0 2.5rem; }
+            .thanks-banner { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-left">
+                <span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 12a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9a16 16 0 006.91 6.91l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                    014560964
+                </span>
+                <span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+                    gbscidpfoundationnepal@gmail.com
+                </span>
+            </div>
+            <button class="lang-btn">NP</button>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="index.html" class="logo">
+                    <div class="logo-mark">
+                        <img src="gbs.png" alt="GBS-CIDP Foundation Logo"
+                             style="width:90px; height:90px; border-radius:50%; object-fit:cover; display:block;">
+                    </div>
+                    <div>
+                        <div class="logo-title">GBS-CIDP Foundation</div>
+                        <div class="logo-sub">NeuroAI Research Foundation Nepal</div>
+                    </div>
+                </a>
+
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+
+                <ul class="nav-menu" id="navMenu">
+                    <li class="dropdown">
+                        <a href="index.html#conditions">Conditions <span class="arrow">▾</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.html#conditions" data-tab="gbs">Guillain-Barré Syndrome (GBS)</a></li>
+                            <li><a href="index.html#conditions" data-tab="cidp">CIDP</a></li>
+                            <li><a href="index.html#conditions" data-tab="mmn">MMN</a></li>
+                            <li><a href="index.html#conditions">Medical Glossary</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="index.html#resources">Resources <span class="arrow">▾</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="comingsoon.html">Publications</a></li>
+                            <li><a href="index.html#educational-videos">Educational Videos</a></li>
+                            <li><a href="index.html#find-specialist">Find a Specialist</a></li>
+                            <li><a href="icu-toolkit.html">ICU Toolkit</a></li>
+                            <li><a href="benefits-services.html">Benefits &amp; Services</a></li>
+                            <li><a href="index.html#hcp">For Healthcare Professionals</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="index.html#research">Research</a></li>
+                    <li><a href="index.html#patient-stories">Patient Stories</a></li>
+                    <li class="dropdown">
+                        <a href="team.html">Team <span class="arrow">▾</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="team.html#board">Board of Directors</a></li>
+                            <li><a href="team.html#management">Management Team</a></li>
+                            <li><a href="team.html#medical">Medical Board</a></li>
+                            <li><a href="team.html#advisors">Advisors</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="index.html#about">About <span class="arrow">▾</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.html#about">Our Story</a></li>
+                            <li><a href="index.html#about">Our Mission</a></li>
+                            <li><a href="index.html#research">Research</a></li>
+                            <li><a href="index.html#patient-stories">Patient Stories</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="https://docs.google.com/forms/d/1n8eYdUvExKU20zgdUrQXqv4rXbWNGEQRfSBQEt6K35Q" class="btn-donate-nav">Donate</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PAGE HERO -->
+    <div class="page-hero">
+        <div class="container">
+            <div class="page-hero-content">
+                <ul class="breadcrumb">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#resources">Resources</a></li>
+                    <li>Benefits &amp; Services</li>
+                </ul>
+                <span class="section-tag">Patient &amp; Family Resources</span>
+                <h1>Benefits &amp; Services</h1>
+                <p>How we're supporting GBS and CIDP patients on the ground in Nepal — through hospital partnerships, direct patient outreach, and our growing Neuro AI Research Fellowship.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE CONTENT -->
+    <section class="section">
+        <div class="container">
+
+            <!-- Hospital Collaborations -->
+            <div class="benefits-block">
+                <div class="block-heading">
+                    <h2>Hospital Collaborations</h2>
+                    <span class="status-badge status-active"><span class="status-dot"></span>Ongoing</span>
+                </div>
+                <p class="block-intro">The President has already established partnerships with three major hospitals in Kathmandu. Whenever a new GBS patient is identified at these hospitals, the hospital contacts our foundation — our President and team members then visit the patient in person to provide mental and emotional support, encouragement, motivation, and any necessary assistance.</p>
+
+                <div class="hospital-grid">
+                    <div class="hospital-card">
+                        <div class="hospital-num">01</div>
+                        <h4>TU Teaching Hospital</h4>
+                        <button class="hospital-toggle" aria-expanded="false" data-hosp="tuth">Learn more <span class="chevron">&#9660;</span></button>
+                        <div class="hospital-detail" id="hosp-tuth">
+                            <p>Tribhuvan University Teaching Hospital (TUTH) is the premier public medical and referral center in Nepal, located in Maharajgunj, Kathmandu.</p>
+                            <h5>Overview &amp; History</h5>
+                            <ul class="hospital-detail-list">
+                                <li><strong>Establishment:</strong> Opened in March 1986 following a 1981 cooperation agreement with the Japanese government.</li>
+                                <li><strong>Capacity:</strong> Expanded from an initial 301 beds to roughly 750–850 beds today.</li>
+                                <li><strong>Affiliation:</strong> Serves as the primary clinical teaching ground for the Institute of Medicine (IOM) under Tribhuvan University.</li>
+                            </ul>
+                            <h5>Key Functions</h5>
+                            <ul class="hospital-detail-list">
+                                <li><strong>Medical Education:</strong> Trains undergraduate and postgraduate students in medicine, nursing, dentistry, and allied health sciences.</li>
+                                <li><strong>Healthcare Services:</strong> Operates 22 specialized departments — ranging from general emergency care (24/7) to advanced procedures like open-heart surgery, neurology, and kidney transplants.</li>
+                                <li><strong>Research:</strong> Functions as a leading national hub for biomedical and health sciences research.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="hospital-card">
+                        <div class="hospital-num">02</div>
+                        <h4>KMC (Kathmandu Medical College)</h4>
+                        <button class="hospital-toggle" aria-expanded="false" data-hosp="kmc">Learn more <span class="chevron">&#9660;</span></button>
+                        <div class="hospital-detail" id="hosp-kmc">
+                            <p>Kathmandu Medical College (KMC) is a medical education and healthcare institution in Nepal, affiliated with Kathmandu University. Established in 1997, KMC operates teaching hospitals in Sinamangal and Duwakot, Kathmandu, providing medical education, specialized healthcare, and clinical training.</p>
+                            <h5>Overview &amp; History</h5>
+                            <ul class="hospital-detail-list">
+                                <li><strong>Establishment:</strong> Founded in 1997.</li>
+                                <li><strong>Affiliation:</strong> Affiliated with Kathmandu University.</li>
+                                <li><strong>Locations:</strong> Teaching hospitals in Sinamangal and Duwakot, Kathmandu.</li>
+                                <li><strong>Focus:</strong> Combines medical education, patient care, clinical training, and research.</li>
+                            </ul>
+                            <h5>Key Functions</h5>
+                            <ul class="hospital-detail-list">
+                                <li><strong>Healthcare Services:</strong> Provides care across a wide range of specialties, including Neurology, Neurosurgery, Internal Medicine, Cardiology, Nephrology, Psychiatry, and Physiotherapy.</li>
+                                <li><strong>Neurological Care:</strong> Has dedicated Neurology and Neurosurgery services for patients with neurological and neurosurgical conditions.</li>
+                                <li><strong>Emergency &amp; Critical Care:</strong> Provides emergency and critical-care services for patients requiring immediate or specialized treatment.</li>
+                                <li><strong>Medical Education:</strong> Provides undergraduate and postgraduate medical education and clinical training.</li>
+                                <li><strong>Diagnostics:</strong> Offers diagnostic services and medical technologies to support patient evaluation and treatment.</li>
+                                <li><strong>Research &amp; Training:</strong> Supports clinical research, medical education, and specialist training, including postgraduate training in Neurosurgery.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="hospital-card">
+                        <div class="hospital-num">03</div>
+                        <h4>Neuro Bansabari Hospital (Neuro Hospital)</h4>
+                        <button class="hospital-toggle" aria-expanded="false" data-hosp="neuro">Learn more <span class="chevron">&#9660;</span></button>
+                        <div class="hospital-detail" id="hosp-neuro">
+                            <p>Neuro Bansbari Hospital, also known as the Upendra Devkota Memorial National Institute of Neurological and Allied Sciences, is a specialized neurological hospital located in Bansbari, Kathmandu. Established in 2006 by the late Professor Dr. Upendra Devkota, the hospital focuses on the diagnosis, treatment, and rehabilitation of neurological and neurosurgical conditions.</p>
+                            <h5>Overview &amp; History</h5>
+                            <ul class="hospital-detail-list">
+                                <li><strong>Establishment:</strong> Founded in 2006.</li>
+                                <li><strong>Location:</strong> Bansbari, Kathmandu, Nepal.</li>
+                                <li><strong>Specialization:</strong> Focuses primarily on neurology, neurosurgery, and related neurological conditions.</li>
+                                <li><strong>Purpose:</strong> Established to provide specialized neurological care and advanced treatment within Nepal.</li>
+                            </ul>
+                            <h5>Key Functions</h5>
+                            <ul class="hospital-detail-list">
+                                <li><strong>Neurology:</strong> Provides diagnosis and treatment for conditions affecting the brain, spinal cord, and nervous system.</li>
+                                <li><strong>Neurosurgery:</strong> Provides surgical treatment for brain and spinal disorders.</li>
+                                <li><strong>Emergency &amp; Critical Care:</strong> Offers emergency neurological services and intensive care for serious conditions.</li>
+                                <li><strong>Diagnostics:</strong> Provides neurological testing and imaging to assist with diagnosis and treatment.</li>
+                                <li><strong>Rehabilitation:</strong> Offers physiotherapy and rehabilitation services to support recovery after neurological conditions and surgery.</li>
+                                <li><strong>Research &amp; Training:</strong> Supports medical education, specialist training, and neurological research.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="in-progress-card">
+                    <div class="in-progress-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <div>
+                        <strong>Bir Hospital — Coordination in Progress</strong>
+                        <p>Coordination with Bir Hospital, a major government hospital, is currently underway.</p>
+                    </div>
+                </div>
+
+                <div class="in-progress-card">
+                    <div class="in-progress-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+                    </div>
+                    <div>
+                        <strong>Nationwide Outreach</strong>
+                        <p>We have also begun reaching out to hospitals across Nepal by sending letters to establish coordination for GBS and CIDP awareness programs and to facilitate the collection of data on GBS patients.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Patient Engagement & Outreach -->
+            <div class="benefits-block">
+                <div class="block-heading">
+                    <h2>Patient Engagement &amp; Outreach</h2>
+                    <span class="status-badge status-progress"><span class="status-dot"></span>Enrollment Underway</span>
+                </div>
+                <p class="block-intro">We personally reach out to patients, listen to their emotional challenges, and reassure them they are not alone — while explaining the foundation and its mission.</p>
+
+                <div class="outreach-grid">
+                    <div class="outreach-card">
+                        <div class="outreach-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                        </div>
+                        <h4>WhatsApp &amp; Facebook Community Groups</h4>
+                        <p>Community group chats where patients can connect, share their feelings, and offer mutual support. Patient enrollment is currently underway.</p>
+                    </div>
+                    <div class="outreach-card">
+                        <div class="outreach-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+                        </div>
+                        <h4>Data Collection Phase</h4>
+                        <p>We are currently in the data collection phase, gathering and organizing patient information ahead of bringing patients together for structured support.</p>
+                    </div>
+                </div>
+
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="process-num">01</div>
+                        <div><strong>Direct outreach &amp; listening</strong><p>Our team reaches out individually to each patient, listens to their emotional challenges, and reassures them they are not alone.</p></div>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-num">02</div>
+                        <div><strong>Community connection</strong><p>Patients are invited into WhatsApp and Facebook community groups to connect and support one another.</p></div>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-num">03</div>
+                        <div><strong>Data collection &amp; organization</strong><p>Patient information is collected and organized to prepare for structured group sessions.</p></div>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-num">04</div>
+                        <div><strong>Weekly / biweekly expert-led sessions</strong><p>Once organized, patients join virtual sessions led by medical experts — doctors, consultants, healthcare workers, and physiotherapists — where GBS patients and caregivers can share their feelings, challenges, and stories.</p></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Neuro AI Research Fellowship -->
+            <div class="benefits-block">
+                <div class="block-heading">
+                    <h2>Neuro AI Research Fellowship</h2>
+                    <span class="status-badge status-active"><span class="status-dot"></span>Launching</span>
+                </div>
+
+                <div class="thanks-banner">
+                    <div class="thanks-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                    </div>
+                    <p><strong>Thank you, GBS International</strong>, for supporting us through the Global Program Fund. Your generous support is helping our operations and expanding our work significantly.</p>
+                </div>
+
+                <div class="fellowship-card">
+                    <div class="fellowship-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                    </div>
+                    <div>
+                        <h4>Neuro AI Research Fellowship</h4>
+                        <p>In partnership with <strong>UNESCO</strong>, the foundation is launching the Neuro AI Research Fellowship to train doctors, nurses, and healthcare workers in the practical use of AI in healthcare and research.</p>
+                        <p>Through this fellowship, we are working to increase awareness of GBS and CIDP among healthcare professionals across Nepal.</p>
+                        <div class="fellowship-tags">
+                            <span class="fellowship-tag">UNESCO Partnership</span>
+                            <span class="fellowship-tag">AI in Healthcare</span>
+                            <span class="fellowship-tag">Clinical Training</span>
+                            <span class="fellowship-tag">GBS/CIDP Awareness</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Join Us in Making a Difference</h2>
+            <p>Whether through volunteering, donations, or spreading awareness — every contribution helps build a stronger foundation for patients and families across Nepal.</p>
+            <div class="cta-buttons">
+                <a href="https://docs.google.com/forms/d/1n8eYdUvExKU20zgdUrQXqv4rXbWNGEQRfSBQEt6K35Q" class="btn btn-primary btn-lg" style="background:white;color:var(--blue-deep);">Make a Donation</a>
+                <a href="index.html#about" class="btn btn-ghost btn-lg">Get Involved</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo-wrap">
+                        <div class="logo-mark">
+                            <img src="gbs.png" alt="GBS-CIDP Foundation Logo"
+                                 style="width:38px; height:38px; border-radius:50%; object-fit:cover; display:block;">
+                        </div>
+                        <div class="footer-logo-name">GBS-CIDP and NeuroAI<br>Research Foundation Nepal</div>
+                    </div>
+                    <p>Improving the quality of life for individuals and families affected by GBS, CIDP, MMN, and variants through support, education, research, and advocacy.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=61584876545928" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg></a>
+                        <a href="#" aria-label="Twitter / X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                        <a href="https://www.linkedin.com/company/gbs-cidp-research-foundation-nepal" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/></svg></a>
+                        <a href="https://www.instagram.com/gbscidp_nepal/" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.75 2C4.574 2 2 4.574 2 7.75v8.5C2 19.426 4.574 22 7.75 22h8.5C19.426 22 22 19.426 22 16.25v-8.5C22 4.574 19.426 2 16.25 2h-8.5zm0 2h8.5A3.75 3.75 0 0 1 20 7.75v8.5A3.75 3.75 0 0 1 16.25 20h-8.5A3.75 3.75 0 0 1 4 16.25v-8.5A3.75 3.75 0 0 1 7.75 4zm8.75 1.5a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#conditions">Conditions</a></li>
+                        <li><a href="index.html#resources">Resources</a></li>
+                        <li><a href="index.html#research">Research</a></li>
+                        <li><a href="index.html#patient-stories">Patient Stories</a></li>
+                        <li><a href="team.html">Our Team</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Get Involved</h4>
+                    <ul>
+                        <li><a href="https://docs.google.com/forms/d/1n8eYdUvExKU20zgdUrQXqv4rXbWNGEQRfSBQEt6K35Q">Make a Donation</a></li>
+                        <li><a href="https://docs.google.com/forms/d/1n8eYdUvExKU20zgdUrQXqv4rXbWNGEQRfSBQEt6K35Q">Volunteer &amp; Membership</a></li>
+                        <li><a href="https://docs.google.com/forms/d/1n8eYdUvExKU20zgdUrQXqv4rXbWNGEQRfSBQEt6K35Q">Events</a></li>
+                        <li><a href="https://docs.google.com/forms/d/1n8eYdUvExKU20zgdUrQXqv4rXbWNGEQRfSBQEt6K35Q">Host a Fundraiser</a></li>
+                        <li><a href="https://docs.google.com/forms/d/1n8eYdUvExKU20zgdUrQXqv4rXbWNGEQRfSBQEt6K35Q">Awareness Campaigns</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <div class="contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+                        <a href="mailto:gbscidpfoundationnepal@gmail.com">gbscidpfoundationnepal@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 12a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9a16 16 0 006.91 6.91l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                        <span>014560964</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <span>Kumarigal, Kathmandu, Nepal</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 GBS-CIDP and NeuroAI Research Foundation Nepal. All rights reserved.</p>
+                <p><a href="#privacy">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="#terms">Terms of Use</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll shadow
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 20);
+        });
+
+        // Mobile menu toggle
+        document.getElementById('mobileToggle').addEventListener('click', () => {
+            document.getElementById('navMenu').classList.toggle('open');
+        });
+
+        // Close mobile menu on any link click
+        document.querySelectorAll('.nav-menu a').forEach(l => {
+            l.addEventListener('click', () => document.getElementById('navMenu').classList.remove('open'));
+        });
+
+        // Active nav link highlight
+        (function () {
+            const page = location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('.nav-menu > li > a').forEach(a => {
+                const href = a.getAttribute('href').split('#')[0];
+                if (href === page) a.classList.add('active');
+            });
+        })();
+
+        // Hospital card expand/collapse
+        document.querySelectorAll('.hospital-toggle').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                const id = 'hosp-' + this.dataset.hosp;
+                const detail = document.getElementById(id);
+                const isOpen = detail.classList.contains('open');
+                if (isOpen) {
+                    detail.classList.remove('open');
+                    this.setAttribute('aria-expanded', 'false');
+                    this.innerHTML = 'Learn more <span class="chevron">&#9660;</span>';
+                } else {
+                    detail.classList.add('open');
+                    this.setAttribute('aria-expanded', 'true');
+                    this.innerHTML = 'Show less <span class="chevron">&#9660;</span>';
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
